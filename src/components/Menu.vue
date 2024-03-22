@@ -10,9 +10,9 @@ function toggleMenu() {
 
 <template>
   <div class="menu">
-    <img src="/images/menu-48.png" @click="toggleMenu">
-    <ul v-show="isOpen">
-      <li>Hamburger Menu</li>
+    <img alt="Hamburger Menu" src="/images/menu-48.png" @click="toggleMenu">
+    <ul v-show="isOpen" class="bg-white m-0 p-1.5">
+      <li class="text-gray-600 px-3">Hamburger Menu</li>
     </ul>
   </div>
 </template>
@@ -28,20 +28,17 @@ function toggleMenu() {
   padding: 8px;
 }
 ul {
-  width: 200px;
   position: absolute;
-  margin: 0;
-  padding: 0;
+  width: 200px;
   top: 54px;
   right: 10px;
 }
 li {
-  background-color: white;
-  color: black;
-  margin: 0;
-  padding: 0 12px;
   height: 46px;
   line-height: 46px;
   list-style-type: none;
+}
+li:hover {
+  background-color: lightgray;
 }
 </style>
