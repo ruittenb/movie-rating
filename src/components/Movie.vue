@@ -8,26 +8,34 @@ defineProps({
 </script>
 
 <template>
-  <div class="inline-block bg-white text-gray-800 mr-4 mb-4 movie">
-    <img :alt="movie.name" :src="movie.image" class="poster" />
-    <h1>{{ movie.name }}</h1>
-    <div class="my-1.5"><Genres :names="movie.genres" /></div>
-    <p class="my-1.5">{{ movie.description }}</p>
-    <div class="my-1.5"><Rating :rating="movie.rating" class="block" /></div>
+  <div class="inline-block bg-white text-gray-800 mb-4 movie">
+    <div class="vertical-spreader flex flex-col justify-between">
+      <div>
+        <img :alt="movie.name" :src="movie.image" class="poster" />
+        <h1>{{ movie.name }}</h1>
+        <div class="my-3"><Genres :names="movie.genres" /></div>
+        <p class="my-3">{{ movie.description }}</p>
+      </div>
+      <div class="my-3"><Rating :rating="movie.rating" class="block" /></div>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .movie {
-  --width: 350px;
+  --width: 400px;
   --margin: 10px;
   --poster-height: calc(1.5 * var(--width));
+  --box-height: calc(2.17 * var(--width));
 
   position: relative;
   width: var(--width);
-  height: calc(2.2 * var(--width));
+  height: var(--box-height);
   padding-left: var(--margin);
   padding-right: var(--margin);
+}
+.vertical-spreader {
+  height: 100%;
 }
 .poster {
   position: absolute;
@@ -36,7 +44,6 @@ defineProps({
   left: 0;
 }
 h1 {
-  @apply my-1.5;
   font-size: 28px;
   margin-top: var(--poster-height);
 }

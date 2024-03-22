@@ -13,6 +13,7 @@ function toggleMenu() {
     <img alt="Hamburger Menu" src="/images/menu-48.png" @click="toggleMenu">
     <ul v-show="isOpen" class="bg-white m-0 p-1.5">
       <li class="text-gray-600 px-3">Hamburger Menu</li>
+      <li class="text-gray-600 px-3">Future Option</li>
     </ul>
   </div>
 </template>
@@ -30,7 +31,7 @@ function toggleMenu() {
 ul {
   position: absolute;
   width: 200px;
-  top: 54px;
+  top: 62px;
   right: 10px;
 }
 li {

@@ -13,7 +13,7 @@ function classes(num) {
 </script>
 
 <template>
-  <span class="mr-3">Rating: {{ rating }} / {{ MAX_RATING }}</span>
+  <span class="mr-3">Rating: ({{ rating }} / {{ MAX_RATING }})</span>
   <span v-for="num in Array(5).keys()" :key="num">
     <StarIcon :class="classes(num)" />
   </span>
