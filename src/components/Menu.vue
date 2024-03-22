@@ -1,15 +1,20 @@
 <script setup>
 import { ref } from 'vue'
+import vClickOutside from 'v-click-outside'
 
 const isOpen = ref(false)
 
 function toggleMenu() {
   isOpen.value = !isOpen.value
 }
+
+function closeMenu() {
+  isOpen.value = false
+}
 </script>
 
 <template>
-  <div class="menu">
+  <div class="menu" v-click-outside="closeMenu">
     <img alt="Hamburger Menu" src="/images/menu-48.png" @click="toggleMenu">
     <ul v-show="isOpen" class="bg-white m-0 p-1.5">
       <li class="text-gray-600 px-3">Hamburger Menu</li>

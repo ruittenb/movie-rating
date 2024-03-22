@@ -16,7 +16,7 @@ defineProps({
         <div class="my-3"><Genres :names="movie.genres" /></div>
         <p class="my-3">{{ movie.description }}</p>
       </div>
-      <div class="my-3"><Rating :rating="movie.rating" class="block" /></div>
+      <div class="my-3"><Rating :rating="movie.rating" /></div>
     </div>
   </div>
 </template>
