@@ -1,29 +1,23 @@
 <script setup>
 import StarIcon from './StarIcon.vue'
 
-const props = defineProps<{
-  rating: number
-}>({})
+const MAX_RATING = 5
+
+const props = defineProps({
+  rating: Number
+})
 
 function classes(num) {
-  return num <= props.rating ? 'color-gold' : 'color-grey'
+  return num < props.rating ? 'text-yellow-300' : 'text-gray-500'
 }
-
 </script>
 
 <template>
-Rating: {{ rating }} / 5
-  <span v-for="num in 5" :key="num">
+  <span class="mr-3">Rating: {{ rating }} / {{ MAX_RATING }}</span>
+  <span v-for="num in Array(5).keys()" :key="num">
     <StarIcon :class="classes(num)" />
   </span>
 </template>
 
 <style scoped>
-.color-gold {
-  color: gold;
-}
-.color-grey {
-  color: #aaa;
-}
-
 </style>

@@ -1,5 +1,5 @@
 <script setup>
-import Root from './components/Root.vue'
+import Root from './views/Root.vue'
 </script>
 
 <template>
