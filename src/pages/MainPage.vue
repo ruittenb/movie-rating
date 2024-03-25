@@ -1,12 +1,17 @@
 <script setup>
-import { ref, onBeforeMount } from 'vue'
+import { computed, ref, onBeforeMount } from 'vue'
 import Movie from "@/components/Movie.vue"
 import { useStorage } from '@/composables/useStorage'
 import movieData from '../movies.json'
 
 const movies = ref([])
+const sortedMovies = computed(() => [ ...movies.value].sort(byId))
 
 const { readData, writeData } = useStorage()
+
+function byId(a, b) {
+  return a.id - b.id
+}
 
 function vote(id, rating) {
   const votedMovie = movies.value.find(movie => movie.id === id)
@@ -28,7 +33,7 @@ onBeforeMount(() => {
 
 <template>
   <div class="main-area px-6 py-5 flex flex-row flex-wrap gap-5">
-    <Movie v-for="movie in movies" :key="movie.id" :movie="movie" @vote="(id, rating) => vote(id, rating)" />
+    <Movie v-for="movie in sortedMovies" :key="movie.id" :movie="movie" @vote="(id, rating) => vote(id, rating)" />
   </div>
 </template>
 
