@@ -51,6 +51,6 @@ function vote(id, num) {
 }
 h1 {
   font-size: 28px;
-  margin-top: var(--poster-height);
+  margin-top: calc(10px + var(--poster-height));
 }
 </style>
