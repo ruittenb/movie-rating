@@ -5,6 +5,12 @@ import Genres from './Genres.vue'
 defineProps({
   movie: Object
 })
+
+const emit = defineEmits(['vote'])
+
+function vote(id, num) {
+  emit('vote', id, num)
+}
 </script>
 
 <template>
@@ -16,7 +22,7 @@ defineProps({
         <div class="my-3"><Genres :names="movie.genres" /></div>
         <p class="my-3">{{ movie.description }}</p>
       </div>
-      <div class="my-3"><Rating :rating="movie.rating" /></div>
+      <div class="my-3"><Rating :rating="movie.rating" @vote="(num) => vote(movie.id, num)" /></div>
     </div>
   </div>
 </template>

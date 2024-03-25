@@ -27,7 +27,7 @@ function closeMenu() {
 .menu {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   width: 100%;
   height: 64px;
