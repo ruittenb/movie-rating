@@ -8,8 +8,8 @@ defineProps({
 
 const emit = defineEmits(['vote'])
 
-function vote(id, num) {
-  emit('vote', id, num)
+function vote(id, rating) {
+  emit('vote', id, rating)
 }
 </script>
 
@@ -22,7 +22,7 @@ function vote(id, num) {
         <div class="my-3"><Genres :names="movie.genres" /></div>
         <p class="my-3">{{ movie.description }}</p>
       </div>
-      <div class="my-3"><Rating :rating="movie.rating" @vote="(num) => vote(movie.id, num)" /></div>
+      <div class="my-3"><Rating :rating="movie.rating" @vote="(rating) => vote(movie.id, rating)" /></div>
     </div>
   </div>
 </template>

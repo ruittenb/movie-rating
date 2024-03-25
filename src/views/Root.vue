@@ -4,7 +4,6 @@ import MainPage from '../pages/MainPage.vue'
 </script>
 
 <template>
-  <!-- This is where your template goes	-->
   <div class="page">
     <Menu />
     <MainPage />
@@ -13,7 +12,6 @@ import MainPage from '../pages/MainPage.vue'
 
 <style scoped>
 .page {
-  background-color: black;
   color: whitesmoke;
   height: 100%;
   width: 100%;

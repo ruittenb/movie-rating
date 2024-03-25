@@ -15,16 +15,21 @@ function closeMenu() {
 
 <template>
   <div class="menu" v-click-outside="closeMenu">
-    <img alt="Hamburger Menu" src="/images/menu-48.png" @click="toggleMenu">
+    <img alt="Hamburger Menu" draggable="false" src="/images/menu-48.png" @click="toggleMenu">
     <ul v-show="isOpen" class="bg-white m-0 p-1.5">
-      <li class="text-gray-600 px-3">Hamburger Menu</li>
-      <li class="text-gray-600 px-3">Future Option</li>
+      <li>Tomaat</li>
+      <li>Kaas</li>
+      <li>Hamburger</li>
+      <li>Sla</li>
+      <li>Broodje</li>
     </ul>
   </div>
 </template>
 
 <style scoped>
 .menu {
+  user-select: none;
+  -webkit-user-select: none;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -40,6 +45,7 @@ ul {
   right: 10px;
 }
 li {
+  @apply text-gray-600 px-3;
   height: 46px;
   line-height: 46px;
   list-style-type: none;
