@@ -19,8 +19,8 @@ function vote(id, rating) {
       <div>
         <img :alt="movie.name" :src="movie.image" class="poster" />
         <h1>{{ movie.name }}</h1>
-        <div class="my-3"><Genres :names="movie.genres" /></div>
-        <p class="my-3">{{ movie.description }}</p>
+        <div class="mt-2 mb-3"><Genres :names="movie.genres" /></div>
+        <p class="h-[120px] overflow-y-auto">{{ movie.description }}</p>
       </div>
       <div class="my-3"><Rating :rating="movie.rating" @vote="(rating) => vote(movie.id, rating)" /></div>
     </div>
@@ -32,7 +32,7 @@ function vote(id, rating) {
   --width: 400px;
   --margin: 10px;
   --poster-height: calc(1.5 * var(--width));
-  --box-height: calc(2.17 * var(--width));
+  --box-height: calc(2.19 * var(--width));
 
   position: relative;
   width: var(--width);

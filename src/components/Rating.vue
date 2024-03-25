@@ -10,7 +10,11 @@ const props = defineProps({
 const emit = defineEmits(['vote'])
 
 function classes(num) {
-  return num < props.rating ? 'text-yellow-300' : 'text-gray-500'
+  return num < props.rating ? 'text-yellow-400' : 'text-gray-500'
+}
+
+function formatRating(num) {
+  return num === null ? '-' : num
 }
 
 function vote(num) {
@@ -21,7 +25,7 @@ function vote(num) {
 </script>
 
 <template>
-  <span class="mr-3">Rating: ({{ rating }} / {{ MAX_RATING }})</span>
+  <span class="mr-3">Rating: ({{ formatRating(rating) }} / {{ MAX_RATING }})</span>
   <span v-for="num in Array(MAX_RATING).keys()" :key="num">
     <button class="simple" @click="() => vote(num+1)">
       <StarIcon :class="classes(num)" />

@@ -49,6 +49,18 @@
         "Sci-Fi"
       ],
       "inTheaters": false
+    },
+    {
+      "id": 5,
+      "name": "Ja zuster, nee zuster",
+      "description": "A cheerful stylized musical comedy, the story takes place in the guest-house of sister Klivia. The inhabitants are cheerful and good-hearted, but when the grumpy neighbor Boordevol discovers that one of the inhabitants is a former thief, he attempts to have the guest-house shut down.",
+      "image": "https://m.media-amazon.com/images/M/MV5BODFmNDdjOGMtZjA2Yy00NTEyLWE3ZGMtYjhkMDA3YjJjOTNjXkEyXkFqcGdeQXVyMzExODEzNDA@._V1_FMjpg_UX752_.jpg",
+      "rating": null,
+      "genres": [
+        "Comedy",
+        "Musical"
+      ],
+      "inTheaters": false
     }
   ]
 }
