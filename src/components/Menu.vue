@@ -40,6 +40,7 @@ function closeMenu() {
 }
 ul {
   position: absolute;
+  z-index: 30;
   width: 200px;
   top: 62px;
   right: 10px;
