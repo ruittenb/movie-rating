@@ -23,9 +23,8 @@ function vote(id, rating) {
 }
 
 onBeforeMount(() => {
-  try {
-    movies.value = readData()
-  } catch (error) {
+  movies.value = readData()
+  if (movies.value === null) {
     movies.value = movieData.items
   }
 })

@@ -45,7 +45,7 @@ ul {
   right: 10px;
 }
 li {
-  @apply text-gray-600 px-3;
+  @apply text-gray-500 px-3;
   height: 46px;
   line-height: 46px;
   list-style-type: none;

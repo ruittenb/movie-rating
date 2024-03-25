@@ -1,7 +1,7 @@
 <script setup>
 import StarIcon from './StarIcon.vue'
 
-const MAX_RATING = 7
+const MAX_RATING = 10
 
 const props = defineProps({
   rating: Number
@@ -10,7 +10,7 @@ const props = defineProps({
 const emit = defineEmits(['vote'])
 
 function classes(num) {
-  return num < props.rating ? 'text-yellow-400' : 'text-gray-500'
+  return num < props.rating ? 'text-star-gold' : 'text-star-disabled'
 }
 
 function formatRating(num) {
@@ -20,6 +20,8 @@ function formatRating(num) {
 function vote(num) {
   if (props.rating !== num) {
     emit('vote', num)
+  } else {
+    emit('vote', null)
   }
 }
 </script>
@@ -28,7 +30,7 @@ function vote(num) {
   <span class="mr-3">Rating: ({{ formatRating(rating) }} / {{ MAX_RATING }})</span>
   <span v-for="num in Array(MAX_RATING).keys()" :key="num">
     <button class="simple" @click="() => vote(num+1)">
-      <StarIcon :class="classes(num)" />
+      <StarIcon class="w-6 h-6" :class="classes(num)" />
     </button>
   </span>
 </template>

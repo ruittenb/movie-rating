@@ -1,6 +1,7 @@
 <script setup>
-import Rating from './Rating.vue'
+import LargeStar from './LargeStar.vue'
 import Genres from './Genres.vue'
+import Rating from './Rating.vue'
 
 defineProps({
   movie: Object
@@ -18,6 +19,7 @@ function vote(id, rating) {
     <div class="vertical-spreader flex flex-col justify-between">
       <div>
         <img :alt="movie.name" :src="movie.image" class="poster" />
+        <LargeStar :rating="movie.rating" />
         <h1>{{ movie.name }}</h1>
         <div class="mt-2 mb-3"><Genres :names="movie.genres" /></div>
         <p class="h-[120px] overflow-y-auto">{{ movie.description }}</p>
