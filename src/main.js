@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import vClickOutside from 'v-click-outside'
+import vClickOutside from 'click-outside-vue3'
 import '../style.css'
 
 const app = createApp(App)
