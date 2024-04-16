@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import vClickOutside from 'v-click-outside'
 
 const isOpen = ref(false)
 
@@ -14,15 +13,16 @@ function closeMenu() {
 </script>
 
 <template>
-  <div class="menu" v-click-outside="closeMenu">
-    <img alt="Hamburger Menu" draggable="false" src="/images/menu-48.png" @click="toggleMenu">
-    <ul v-show="isOpen" class="bg-white m-0 p-1.5">
-      <li>Tomaat</li>
-      <li>Kaas</li>
-      <li>Hamburger</li>
-      <li>Sla</li>
-      <li>Broodje</li>
-    </ul>
+  <div class="menu">
+    <div v-click-outside="closeMenu">
+      <img alt="Hamburger Menu" :draggable="false" src="/images/menu-48.png" @click="toggleMenu">
+      <ul v-show="isOpen" class="bg-white m-0 p-1.5">
+        <li>Niks</li>
+        <li>Nakkes</li>
+        <li>Nada</li>
+        <li @click="addMovie">Add Movie</li>
+      </ul>
+    </div>
   </div>
 </template>
 
