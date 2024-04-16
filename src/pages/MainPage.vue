@@ -1,6 +1,8 @@
 <script setup>
 import { computed, ref, onBeforeMount } from 'vue'
-import Movie from "@/components/Movie.vue"
+import MovieForm from "@/components/MovieForm.vue"
+import MoviePanel from "@/components/MoviePanel.vue"
+import Popup from "@/components/Popup.vue"
 import { useStorage } from '@/composables/useStorage'
 import movieData from '../movies.json'
 
@@ -32,8 +34,11 @@ onBeforeMount(() => {
 
 <template>
   <div class="main-area px-6 py-5 flex flex-row flex-wrap gap-5">
-    <Movie v-for="movie in sortedMovies" :key="movie.id" :movie="movie" @vote="(id, rating) => vote(id, rating)" />
+    <MoviePanel v-for="movie in sortedMovies" :key="movie.id" :movie="movie" @vote="(id, rating) => vote(id, rating)" />
   </div>
+  <!--Popup>
+    <MovieForm/>
+  </Popup -->
 </template>
 
 <style scoped>

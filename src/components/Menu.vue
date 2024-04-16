@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
+const emit = defineEmits(['add-movie'])
+
 const isOpen = ref(false)
 
 function toggleMenu() {
@@ -9,6 +11,11 @@ function toggleMenu() {
 
 function closeMenu() {
   isOpen.value = false
+}
+
+function addMovie() {
+  closeMenu()
+  emit('add-movie')
 }
 </script>
 
