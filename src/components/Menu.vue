@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-const emit = defineEmits(['add-movie'])
+const emit = defineEmits(['open-add-movie'])
 
 const isOpen = ref(false)
 
@@ -15,7 +15,7 @@ function closeMenu() {
 
 function addMovie() {
   closeMenu()
-  emit('add-movie')
+  emit('open-add-movie')
 }
 </script>
 
