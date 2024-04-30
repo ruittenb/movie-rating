@@ -1,16 +1,26 @@
 <script setup>
 import { computed, onBeforeMount, ref } from "vue";
-import MoviePanel from "@/components/MoviePanel.vue";
 import { useStorage } from "@/composables/useStorage";
-import movieData from "../movies.json";
+import MoviePanel from "@/components/MoviePanel.vue";
+import Popup from "@/components/Popup.vue";
+import MovieForm from "@/components/MovieForm.vue";
 import MovieTable from "@/pages/MovieTable.vue";
+import movieData from "../movies.json";
 
 const props = defineProps({
   isAddMoviePopupOpen: Boolean,
 });
 
+const emit = defineEmits(["close-add-movie"]);
+
 const movies = ref([]);
 const sortedMovies = computed(() => [...movies.value].sort(byId));
+const genres = computed(() =>
+  movies.value.reduce((acc, movie) => {
+    acc.push(...movie.genres);
+    return acc;
+  }, []),
+);
 
 const { readData, writeData } = useStorage();
 
@@ -25,6 +35,10 @@ function vote(id, rating) {
   }
   votedMovie.rating = rating;
   writeData(movies.value);
+}
+
+function closePopup() {
+  emit("close-add-movie");
 }
 
 onBeforeMount(() => {
@@ -48,6 +62,6 @@ onBeforeMount(() => {
     <MovieTable :movies="movies" />
   </div>
   <Popup v-if="isAddMoviePopupOpen">
-    <MovieForm />
+    <MovieForm :genres="genres" v-click-outside="closePopup" />
   </Popup>
 </template>
