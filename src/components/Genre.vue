@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
-  name: String
-})
+  name: String,
+});
 </script>
 
 <template>
@@ -15,6 +15,6 @@ defineProps({
   border-radius: var(--radius);
   height: calc(2 * var(--radius));
   line-height: calc(2 * var(--radius));
-  font-size: 12px;
+  font-size: 10px;
 }
 </style>

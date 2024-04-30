@@ -1,6 +1,6 @@
 <script setup>
-import Menu from '../components/Menu.vue'
-import MainPage from '../pages/MainPage.vue'
+import Menu from "../components/Menu.vue";
+import MainPage from "../pages/MainPage.vue";
 </script>
 
 <template>

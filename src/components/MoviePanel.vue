@@ -1,16 +1,16 @@
 <script setup>
-import LargeStar from './LargeStar.vue'
-import Genres from './Genres.vue'
-import Rating from './Rating.vue'
+import LargeStar from "./LargeStar.vue";
+import Genres from "./Genres.vue";
+import Rating from "./Rating.vue";
 
 defineProps({
-  movie: Object
-})
+  movie: Object,
+});
 
-const emit = defineEmits(['vote'])
+const emit = defineEmits(["vote"]);
 
 function vote(id, rating) {
-  emit('vote', id, rating)
+  emit("vote", id, rating);
 }
 </script>
 
@@ -22,16 +22,21 @@ function vote(id, rating) {
         <LargeStar :rating="movie.rating" />
         <h1>{{ movie.name }}</h1>
         <div class="mt-2 mb-3"><Genres :names="movie.genres" /></div>
-        <p class="h-[120px] overflow-y-auto">{{ movie.description }}</p>
+        <p class="h-[80px] text-xs overflow-y-auto">{{ movie.description }}</p>
       </div>
-      <div class="my-3"><Rating :rating="movie.rating" @vote="(rating) => vote(movie.id, rating)" /></div>
+      <div>
+        <Rating
+          :rating="movie.rating"
+          @vote="(rating) => vote(movie.id, rating)"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .movie {
-  --width: 400px;
+  --width: 300px;
   --margin: 10px;
   --poster-height: calc(1.5 * var(--width));
   --box-height: calc(2.19 * var(--width));
@@ -43,7 +48,7 @@ function vote(id, rating) {
   padding-right: var(--margin);
 }
 .vertical-spreader {
-  height: 100%;
+  height: 90%;
 }
 .poster {
   position: absolute;
@@ -52,7 +57,7 @@ function vote(id, rating) {
   left: 0;
 }
 h1 {
-  font-size: 28px;
+  font-size: 22px;
   margin-top: calc(10px + var(--poster-height));
 }
 </style>
