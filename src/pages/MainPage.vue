@@ -4,7 +4,7 @@ import { useStorage } from "@/composables/useStorage";
 import MoviePanel from "@/components/MoviePanel.vue";
 import Popup from "@/components/Popup.vue";
 import MovieForm from "@/components/MovieForm.vue";
-import MovieTable from "@/pages/MovieTable.vue";
+import MovieTable from "@/components/MovieTable.vue";
 import movieData from "../movies.json";
 
 const props = defineProps({
@@ -13,17 +13,10 @@ const props = defineProps({
 
 const emit = defineEmits(["close-add-movie"]);
 
+const { readData, writeData } = useStorage();
+
 const movies = ref([]);
 const sortedMovies = computed(() => [...movies.value].sort(byId));
-const genres = computed(() => {
-  const genres = movies.value.reduce((acc, movie) => {
-    acc.push(...movie.genres);
-    return acc;
-  }, []);
-  return [...new Set(genres)].sort();
-});
-
-const { readData, writeData } = useStorage();
 
 function byId(a, b) {
   return a.id - b.id;
@@ -42,8 +35,10 @@ function closePopup() {
   emit("close-add-movie");
 }
 
-function addMovie(event) {
-  console.log(event);
+function addMovie(movie) {
+  console.log("adding movie:", movie);
+  movies.value.push(movie);
+  writeData(movies.value);
 }
 
 onBeforeMount(() => {
@@ -68,7 +63,7 @@ onBeforeMount(() => {
   </div>
   <Popup v-if="isAddMoviePopupOpen">
     <MovieForm
-      :genres="genres"
+      :movie="{}"
       @close-add-movie="closePopup"
       @add-movie="addMovie"
     />

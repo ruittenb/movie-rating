@@ -49,11 +49,21 @@ const columns = computed(() => [
 <template>
   <vue-good-table
     :columns="columns"
+    :line-numbers="false"
     :rows="movies"
     :pagination-options="{
       enabled: true,
       perPage: 3,
       perPageDropdown: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
+    }"
+    :select-options="{
+      enabled: true,
+      selectOnCheckboxOnly: false,
+      selectionInfoClass: 'custom-class',
+      selectionText: 'rows selected',
+      clearSelectionText: 'clear',
+      disableSelectInfo: true, // disable the select info panel on top
+      selectAllByGroup: true, // when used in combination with a grouped table, add a checkbox in the header row to check/uncheck the entire group
     }"
     class="movie-table"
   >
@@ -67,6 +77,7 @@ const columns = computed(() => [
     </template>
     <template #emptystate> No movies found </template>
   </vue-good-table>
+  <br />
   <br />
 </template>
 

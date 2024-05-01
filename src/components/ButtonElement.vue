@@ -15,15 +15,15 @@ const classNames = computed(() => ({ primary: props.primary }));
 
 <style scoped>
 button {
-  background-color: darkgray;
-  border: 2px outset gray;
-  border-radius: 6px;
+  background-color: var(--tertiary-color);
+  border: 2px outset lightgrey;
+  border-radius: var(--border-radius);
   width: 90px;
   padding: 4px;
 }
 button.primary {
-  background-color: mediumseagreen;
-  border: 2px outset darkgreen;
+  background-color: var(--primary-color);
+  border: 2px outset lightgreen;
 }
 button:active {
   border-style: inset;
