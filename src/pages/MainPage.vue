@@ -15,12 +15,13 @@ const emit = defineEmits(["close-add-movie"]);
 
 const movies = ref([]);
 const sortedMovies = computed(() => [...movies.value].sort(byId));
-const genres = computed(() =>
-  movies.value.reduce((acc, movie) => {
+const genres = computed(() => {
+  const genres = movies.value.reduce((acc, movie) => {
     acc.push(...movie.genres);
     return acc;
-  }, []),
-);
+  }, []);
+  return [...new Set(genres)].sort();
+});
 
 const { readData, writeData } = useStorage();
 
@@ -39,6 +40,10 @@ function vote(id, rating) {
 
 function closePopup() {
   emit("close-add-movie");
+}
+
+function addMovie(event) {
+  console.log(event);
 }
 
 onBeforeMount(() => {
@@ -62,6 +67,10 @@ onBeforeMount(() => {
     <MovieTable :movies="movies" />
   </div>
   <Popup v-if="isAddMoviePopupOpen">
-    <MovieForm :genres="genres" v-click-outside="closePopup" />
+    <MovieForm
+      :genres="genres"
+      @close-add-movie="closePopup"
+      @add-movie="addMovie"
+    />
   </Popup>
 </template>
