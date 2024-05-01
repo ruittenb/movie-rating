@@ -48,7 +48,8 @@ function vote(id, rating) {
   padding-right: var(--margin);
 }
 .vertical-spreader {
-  height: 90%;
+  height: 98%;
+  overflow: hidden;
 }
 .poster {
   position: absolute;
@@ -58,6 +59,21 @@ function vote(id, rating) {
 }
 h1 {
   font-size: 22px;
+  display: inline-block;
+  height: 1.8rem;
   margin-top: calc(10px + var(--poster-height));
+  white-space: nowrap;
+}
+.movie:hover {
+  overflow: visible;
+}
+.vertical-spreader:hover {
+  overflow: visible;
+}
+.vertical-spreader div:hover {
+  overflow: visible;
+}
+.vertical-spreader div:hover h1 {
+  background-color: white;
 }
 </style>

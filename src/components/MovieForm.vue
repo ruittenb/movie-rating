@@ -45,7 +45,7 @@ function submitForm() {
     name: name.value.value,
     description: description.value.value,
     image: imageUrl.value.value,
-    genres: selectedGenres(),
+    genres: selectedGenres,
     inTheaters: inTheaters.value.value === "on",
   };
   emit("add-movie", newMovie);

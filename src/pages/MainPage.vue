@@ -17,6 +17,9 @@ const { readData, writeData } = useStorage();
 
 const movies = ref([]);
 const sortedMovies = computed(() => [...movies.value].sort(byId));
+const lastId = computed(() =>
+  Math.max(...movies.value.map((movie) => movie.id)),
+);
 
 function byId(a, b) {
   return a.id - b.id;
@@ -36,9 +39,9 @@ function closePopup() {
 }
 
 function addMovie(movie) {
-  console.log("adding movie:", movie);
-  movies.value.push(movie);
+  movies.value.push({ id: lastId.value + 1, ...movie });
   writeData(movies.value);
+  closePopup();
 }
 
 onBeforeMount(() => {
