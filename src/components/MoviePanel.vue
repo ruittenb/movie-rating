@@ -1,5 +1,5 @@
 <script setup>
-import LargeStar from './LargeStar.vue'
+import DigitStar from './DigitStar.vue'
 import Genres from './Genres.vue'
 import Rating from './Rating.vue'
 
@@ -19,7 +19,7 @@ function vote(id, rating) {
     <div class="vertical-spreader flex flex-col justify-between">
       <div>
         <img :alt="movie.name" :src="movie.image" class="poster" />
-        <LargeStar :rating="movie.rating" />
+        <DigitStar :rating="movie.rating" />
         <h1>{{ movie.name }}</h1>
         <div class="mt-2 mb-3">
           <Genres :names="movie.genres" />

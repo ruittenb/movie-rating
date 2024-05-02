@@ -1,6 +1,4 @@
 <script setup>
-import StarIcon from './StarIcon.vue'
-
 const MAX_RATING = 10
 
 const props = defineProps({
@@ -30,7 +28,7 @@ function vote(num) {
   <span class="mr-3">Rating: ({{ formatRating(rating) }}/{{ MAX_RATING }})</span>
   <span v-for="num in Array(MAX_RATING).keys()" :key="num">
     <button class="simple" @click="() => vote(num + 1)">
-      <StarIcon class="w-4 h-4" :class="classes(num)" />
+      <FontAwesomeIcon icon="star" class="w-4 h-4" :class="classes(num)" />
     </button>
   </span>
 </template>

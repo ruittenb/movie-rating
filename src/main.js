@@ -2,6 +2,7 @@
 import { createApp } from 'vue'
 import VClickOutside from 'click-outside-vue3'
 import VueGoodTablePlugin from 'vue-good-table-next'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import App from './App.vue'
 
 // import the styles
@@ -10,6 +11,7 @@ import '../style.css'
 
 // start code
 const app = createApp(App)
-app.use(VueGoodTablePlugin);
 app.use(VClickOutside)
+app.use(VueGoodTablePlugin)
+app.component('FontAwesomeIcon', FontAwesomeIcon)
 app.mount('#app')
