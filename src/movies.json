@@ -5,7 +5,7 @@
       "name": "Riddick",
       "description": "Left for dead on a sun-scorched planet, Riddick finds himself up against an alien race of predators.",
       "image": "https://image.tmdb.org/t/p/original/rhnDPEcwLrX1bkEnADQr8rPirBT.jpg",
-      "rating": 4,
+      "rating": 6,
       "genres": [
         "Sci-Fi",
         "Action",
@@ -29,7 +29,7 @@
       "name": "Band of Brothers",
       "description": "The story of Easy Company of the U.S. Army 101st Airborne Division and their mission in World War II Europe, from Operation Overlord to V-J Day.\n\n",
       "image": "https://i.pinimg.com/736x/1c/45/b7/1c45b7e64675b0236d0f68b63d832360.jpg",
-      "rating": 7,
+      "rating": 10,
       "genres": [
         "Drama",
         "History",
@@ -42,7 +42,7 @@
       "name": "Dune",
       "description": "A Duke's son leads desert warriors against the galactic emperor and his father's evil nemesis to free their desert world from the emperor's rule.",
       "image": "https://image.tmdb.org/t/p/original/ngUaHgSZGkKy1Izwjk7qwZLOC5A.jpg",
-      "rating": 2,
+      "rating": 4,
       "genres": [
         "Action",
         "Adventure",
@@ -55,12 +55,48 @@
       "name": "Ja zuster, nee zuster",
       "description": "A cheerful stylized musical comedy, the story takes place in the guest-house of sister Klivia. The inhabitants are cheerful and good-hearted, but when the grumpy neighbor Boordevol discovers that one of the inhabitants is a former thief, he attempts to have the guest-house shut down.",
       "image": "https://m.media-amazon.com/images/M/MV5BODFmNDdjOGMtZjA2Yy00NTEyLWE3ZGMtYjhkMDA3YjJjOTNjXkEyXkFqcGdeQXVyMzExODEzNDA@._V1_FMjpg_UX752_.jpg",
-      "rating": null,
+      "rating": 5,
       "genres": [
         "Comedy",
         "Musical"
       ],
       "inTheaters": false
+    },
+    {
+      "id": 6,
+      "name": "The Fellowship of the Ring",
+      "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTlmYzVjNGUtNTc3MC00YjQ2LWIyY2ItMjY0ODU4NWJmZThhXkEyXkFqcGdeQXVyMzExODEzNDA@._V1_FMjpg_UX750_.jpg",
+      "genres": [
+        "Adventure",
+        "Fantasy"
+      ],
+      "inTheaters": true,
+      "rating": 8
+    },
+    {
+      "id": 7,
+      "name": "VII. The Force Awakens",
+      "description": "As a new threat to the galaxy rises, Rey, a desert scavenger, and Finn, an ex-stormtrooper, must join Han Solo and Chewbacca to search for the one hope of restoring peace.",
+      "image": "https://image.tmdb.org/t/p/original/97FvEYBZaclReIVgN17wH4YnLLO.jpg",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Sci-Fi"
+      ],
+      "inTheaters": true,
+      "rating": 7
+    },
+    {
+      "id": 8,
+      "name": "Manos: The Hands of Fate",
+      "description": "A family gets lost on the road and stumbles upon a hidden, underground, devil-worshiping cult led by the fearsome Master and his servant Torgo.",
+      "image": "https://www.moriareviews.com/rongulator/wp-content/uploads/Manos-The-Hands-of-Fate-1966-poster-2.png",
+      "genres": [
+        "Horror"
+      ],
+      "inTheaters": true,
+      "rating": 1
     }
   ]
 }
