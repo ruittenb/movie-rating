@@ -1,24 +1,24 @@
 <script setup>
-import { ref } from "vue";
-import ButtonElement from "./ButtonElement.vue";
-import { useConstants } from "@/composables/useConstants";
+import { ref } from 'vue'
+import ButtonElement from './ButtonElement.vue'
+import { useConstants } from '@/composables/useConstants'
 
 const props = defineProps({
-  movie: Object,
-});
+  movie: Object
+})
 
-const emit = defineEmits(["add-movie", "close-add-movie"]);
+const emit = defineEmits(['add-movie', 'close-add-movie'])
 
-const { genres: allGenres } = useConstants();
+const { genres: allGenres } = useConstants()
 
-const name = ref();
-const description = ref();
-const imageUrl = ref();
-const genres = ref();
-const inTheaters = ref();
+const name = ref()
+const description = ref()
+const imageUrl = ref()
+const genres = ref()
+const inTheaters = ref()
 
 function closeForm() {
-  emit("close-add-movie");
+  emit('close-add-movie')
 }
 
 function getSelectedGenres() {
@@ -26,19 +26,19 @@ function getSelectedGenres() {
     genres.value.children,
     (acc, option) => {
       if (option.selected) {
-        acc.push(option.value);
+        acc.push(option.value)
       }
-      return acc;
+      return acc
     },
-    [],
-  );
+    []
+  )
 }
 
 function submitForm() {
-  const selectedGenres = getSelectedGenres();
+  const selectedGenres = getSelectedGenres()
   if (!name.value.value || !selectedGenres) {
-    console.log("Missing mandatory field (name or genre)");
-    return;
+    console.log('Missing mandatory field (name or genre)')
+    return
   }
   const newMovie = {
     ...props.movie,
@@ -46,9 +46,9 @@ function submitForm() {
     description: description.value.value,
     image: imageUrl.value.value,
     genres: selectedGenres,
-    inTheaters: inTheaters.value.value === "on",
-  };
-  emit("add-movie", newMovie);
+    inTheaters: inTheaters.value.value === 'on'
+  }
+  emit('add-movie', newMovie)
 }
 </script>
 
@@ -80,13 +80,7 @@ function submitForm() {
       <label>
         Genres
         <br />
-        <select
-          multiple="multiple"
-          id="genres"
-          name="genres"
-          ref="genres"
-          size="6"
-        >
+        <select multiple="multiple" id="genres" name="genres" ref="genres" size="6">
           <option v-for="genre in allGenres" :key="genre" :value="genre">
             {{ genre }}
           </option>
@@ -128,7 +122,7 @@ label {
 
 select,
 textarea,
-input[type="text"] {
+input[type='text'] {
   color: black;
   width: 100%;
   margin-bottom: 8px;
@@ -144,7 +138,7 @@ input[type="text"] {
    */
 }
 
-input[type="checkbox"] {
+input[type='checkbox'] {
   width: 18px;
   height: 18px;
   border: 2px inset #eee;

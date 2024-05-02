@@ -2,7 +2,7 @@
 
 <template>
   <div class="popup">
-    <slot> This is a popup </slot>
+    <slot> This is a popup</slot>
   </div>
 </template>
 

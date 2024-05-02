@@ -1,5 +1,5 @@
 <script setup>
-import Root from "./views/Root.vue";
+import Root from './views/Root.vue'
 </script>
 
 <template>
@@ -8,6 +8,7 @@ import Root from "./views/Root.vue";
 
 <style>
 :root {
+  --body-margin-x: 1.5rem;
   --border-radius: 6px;
   --primary-color: mediumseagreen;
   --secondary-color: mediumseagreen;

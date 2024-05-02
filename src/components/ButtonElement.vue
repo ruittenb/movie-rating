@@ -1,12 +1,12 @@
 <script setup>
-import { computed } from "vue";
+import { computed } from 'vue'
 
 const props = defineProps({
   label: String,
-  primary: Boolean,
-});
+  primary: Boolean
+})
 
-const classNames = computed(() => ({ primary: props.primary }));
+const classNames = computed(() => ({ primary: props.primary }))
 </script>
 
 <template>
@@ -21,10 +21,12 @@ button {
   width: 90px;
   padding: 4px;
 }
+
 button.primary {
   background-color: var(--primary-color);
   border: 2px outset lightgreen;
 }
+
 button:active {
   border-style: inset;
 }
