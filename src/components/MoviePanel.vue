@@ -26,9 +26,7 @@ function vote(id, rating) {
         </div>
         <p class="h-[80px] text-xs overflow-y-auto">{{ movie.description }}</p>
       </div>
-      <div>
-        <Rating :rating="movie.rating" @vote="(rating) => vote(movie.id, rating)" />
-      </div>
+      <Rating :rating="movie.rating" class="w-full" @vote="(rating) => vote(movie.id, rating)" />
     </div>
   </div>
 </template>

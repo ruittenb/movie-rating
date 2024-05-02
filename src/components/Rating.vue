@@ -25,12 +25,16 @@ function vote(num) {
 </script>
 
 <template>
-  <span class="mr-3">Rating: ({{ formatRating(rating) }}/{{ MAX_RATING }})</span>
-  <span v-for="num in Array(MAX_RATING).keys()" :key="num">
-    <button class="simple" @click="() => vote(num + 1)">
-      <FontAwesomeIcon icon="star" class="w-4 h-4" :class="classes(num)" />
-    </button>
-  </span>
+  <div class="w-full flex">
+    <span class="inline-block mr-auto">Rating: ({{ formatRating(rating) }}/{{ MAX_RATING }})</span>
+    <span class="inline-block ml-auto">
+      <span v-for="num in Array(MAX_RATING).keys()" :key="num">
+        <button class="simple" @click="() => vote(num + 1)">
+          <FontAwesomeIcon icon="star" class="w-4 h-4" :class="classes(num)" />
+        </button>
+      </span>
+    </span>
+  </div>
 </template>
 
 <style scoped>
