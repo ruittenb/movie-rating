@@ -7,7 +7,7 @@ defineProps({
   totalNrMovies: Number
 })
 
-const emit = defineEmits(['open-add-movie'])
+const emit = defineEmits(['open-add-movie', 'reset-all-ratings'])
 
 const isOpen = ref(false)
 
@@ -23,18 +23,22 @@ function addMovie() {
   closeMenu()
   emit('open-add-movie')
 }
+
+function resetRatings() {
+  closeMenu()
+  emit('reset-all-ratings')
+}
 </script>
 
 <template>
   <div class="menu">
     <StatsBar :average-rating="averageRating" :total-nr-movies="totalNrMovies" />
     <div v-click-outside="closeMenu">
-      <img alt="Hamburger Menu" :draggable="false" src="/images/menu-48.png" @click="toggleMenu" />
+      <FontAwesomeIcon icon="bars" class="hamburger" @click="toggleMenu" />
       <ul v-show="isOpen" class="bg-white m-0 p-1.5">
-        <li>Niks</li>
-        <li>Nakkes</li>
-        <li>Nada</li>
-        <li @click="addMovie">Add Movie</li>
+        <li class="danger" @click="resetRatings"><FontAwesomeIcon icon="rotate-left" />Reset all Ratings</li>
+        <li><FontAwesomeIcon icon="money-bill-wave" />Earn Money Fast</li>
+        <li @click="addMovie"><FontAwesomeIcon icon="circle-plus" class="plus" />Add Movie</li>
       </ul>
     </div>
   </div>
@@ -50,7 +54,15 @@ function addMovie() {
   align-items: center;
   width: 100%;
   height: 64px;
-  padding: 8px 8px 8px var(--body-margin-x);
+  padding: 8px var(--body-margin-x);
+}
+
+.hamburger {
+  font-size: 36px;
+}
+
+.plus {
+  color: var(--add-color);
 }
 
 ul {
@@ -68,7 +80,17 @@ li {
   list-style-type: none;
 }
 
+li.danger {
+  color: var(--danger-color);
+}
+
 li:hover {
   background-color: lightgray;
+}
+
+li svg {
+  width: 20px;
+  font-size: 24px;
+  margin-right: 12px;
 }
 </style>

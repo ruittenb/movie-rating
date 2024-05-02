@@ -6,14 +6,20 @@ const props = defineProps({
   totalNrMovies: Number
 })
 
-const displayRating = computed(() => (typeof props.averageRating === 'number' ? props.averageRating.toFixed(1) : ''))
-const displayTotal = computed(() => (typeof props.totalNrMovies === 'number' ? props.totalNrMovies : ''))
+const average = computed(() => (typeof props.averageRating === 'number' ? props.averageRating.toFixed(1) : ''))
+const total = computed(() => (typeof props.totalNrMovies === 'number' ? props.totalNrMovies : ''))
 </script>
 
 <template>
-  <div class="aggregation-info">
-    <span>Total number of movies: {{ displayTotal }}</span>
+  <div class="stats-info">
+    <span>Total number of movies: {{ total }}</span>
     /
-    <span>Average Rating: {{ displayRating }}</span>
+    <span>Average Rating: {{ average }}</span>
   </div>
 </template>
+
+<style scoped>
+.stats-info {
+  font-size: 22px;
+}
+</style>

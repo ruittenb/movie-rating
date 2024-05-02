@@ -12,6 +12,10 @@ function handleStats({ totalNrMovies: total, averageRating: rating }) {
   averageRating.value = rating
 }
 
+function resetRatings() {
+  console.log('Resetting ratings...')
+}
+
 function openAddMoviePopup() {
   isAddMoviePopupOpen.value = true
 }
@@ -23,7 +27,7 @@ function closeAddMoviePopup() {
 
 <template>
   <div class="page">
-    <Menu :average-rating="averageRating" :total-nr-movies="totalNrMovies" @open-add-movie="openAddMoviePopup" />
+    <Menu :average-rating="averageRating" :total-nr-movies="totalNrMovies" @open-add-movie="openAddMoviePopup" @reset-all-ratings="resetRatings" />
     <MainPage :is-add-movie-popup-open="isAddMoviePopupOpen" @stats-updated="handleStats" @close-add-movie="closeAddMoviePopup" />
   </div>
 </template>
