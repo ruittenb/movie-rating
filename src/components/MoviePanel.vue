@@ -15,7 +15,7 @@ function vote(id, rating) {
 </script>
 
 <template>
-  <div class="inline-block bg-white text-gray-800 mb-4 movie">
+  <div class="movie-panel inline-block bg-white text-gray-800 mb-4">
     <div class="vertical-spreader flex flex-col justify-between">
       <div>
         <img :alt="movie.name" :src="movie.image" class="poster" />
@@ -32,7 +32,7 @@ function vote(id, rating) {
 </template>
 
 <style scoped>
-.movie {
+.movie-panel {
   --width: 300px;
   --margin: 10px;
   --poster-height: calc(1.5 * var(--width));

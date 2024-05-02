@@ -36,8 +36,8 @@ function resetRatings() {
     <div v-click-outside="closeMenu">
       <FontAwesomeIcon icon="bars" class="hamburger" @click="toggleMenu" />
       <ul v-show="isOpen" class="bg-white m-0 p-1.5">
-        <li class="danger" @click="resetRatings"><FontAwesomeIcon icon="rotate-left" />Reset all Ratings</li>
-        <li><FontAwesomeIcon icon="money-bill-wave" />Earn Money Fast</li>
+        <li @click="resetRatings"><FontAwesomeIcon icon="rotate-left" class="danger" />Reset all Ratings</li>
+        <li><FontAwesomeIcon icon="money-bill-wave" />Make Money Fast</li>
         <li @click="addMovie"><FontAwesomeIcon icon="circle-plus" class="plus" />Add Movie</li>
       </ul>
     </div>
@@ -80,7 +80,7 @@ li {
   list-style-type: none;
 }
 
-li.danger {
+.danger {
   color: var(--danger-color);
 }
 
@@ -92,5 +92,6 @@ li svg {
   width: 20px;
   font-size: 24px;
   margin-right: 12px;
+  margin-bottom: -3px;
 }
 </style>
