@@ -6,14 +6,18 @@ import MainPage from '../pages/MainPage.vue'
 const isAddMoviePopupOpen = ref(false)
 const totalNrMovies = ref()
 const averageRating = ref()
+const resetRatings = ref(false)
 
 function handleStats({ totalNrMovies: total, averageRating: rating }) {
   totalNrMovies.value = total
   averageRating.value = rating
 }
 
-function resetRatings() {
-  console.log('Resetting ratings...')
+function handleResetRatings() {
+  resetRatings.value = true
+}
+function handleRatingsWereReset() {
+  resetRatings.value = false
 }
 
 function openAddMoviePopup() {
@@ -27,8 +31,19 @@ function closeAddMoviePopup() {
 
 <template>
   <div class="page">
-    <Menu :average-rating="averageRating" :total-nr-movies="totalNrMovies" @open-add-movie="openAddMoviePopup" @reset-all-ratings="resetRatings" />
-    <MainPage :is-add-movie-popup-open="isAddMoviePopupOpen" @stats-updated="handleStats" @close-add-movie="closeAddMoviePopup" />
+    <Menu
+      :average-rating="averageRating"
+      :total-nr-movies="totalNrMovies"
+      @open-add-movie="openAddMoviePopup"
+      @reset-all-ratings="handleResetRatings"
+    />
+    <MainPage
+      :is-add-movie-popup-open="isAddMoviePopupOpen"
+      :model-value="resetRatings"
+      @close-add-movie="closeAddMoviePopup"
+      @stats-updated="handleStats"
+      @ratings-were-reset="handleRatingsWereReset"
+    />
   </div>
 </template>
 

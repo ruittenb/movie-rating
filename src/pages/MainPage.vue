@@ -8,10 +8,11 @@ import MovieTable from '@/components/MovieTable.vue'
 import movieData from '../movies.json'
 
 const props = defineProps({
+  modelValue: Boolean,
   isAddMoviePopupOpen: Boolean
 })
 
-const emit = defineEmits(['close-add-movie', 'stats-updated'])
+const emit = defineEmits(['close-add-movie', 'ratings-were-reset', 'stats-updated'])
 
 const { readData, writeData } = useStorage()
 
@@ -23,6 +24,10 @@ const lastId = computed(() => Math.max(...movies.value.map((movie) => movie.id))
 
 function byId(a, b) {
   return a.id - b.id
+}
+
+function resetRatings() {
+  movies.value = movies.value.map((movie) => ({ ...movie, rating: null }))
 }
 
 function vote(id, rating) {
@@ -50,6 +55,16 @@ watch(
     emit('stats-updated', { totalNrMovies: totalNrMovies.value, averageRating: averageRating.value })
   },
   { immediate: true }
+)
+
+watch(
+  () => props.modelValue,
+  (newValue) => {
+    if (newValue) {
+      resetRatings()
+      emit('ratings-were-reset')
+    }
+  }
 )
 
 onBeforeMount(() => {
