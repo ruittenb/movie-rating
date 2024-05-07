@@ -39,8 +39,8 @@ function vote(id, rating) {
       <img :alt="movie.name" :src="movie.image" class="poster" />
       <DigitStar :rating="movie.rating" />
       <div class="top-left-overlay">
-        <ButtonElement danger class="w-9"><FontAwesomeIcon icon="trash-can" /></ButtonElement>
         <ButtonElement class="w-9" @click="handleEdit"><FontAwesomeIcon icon="pencil" /></ButtonElement>
+        <ButtonElement danger class="w-9"><FontAwesomeIcon icon="trash-can" /></ButtonElement>
       </div>
       <h1>{{ movie.name }}</h1>
       <div class="mt-2 mb-3">
@@ -75,12 +75,12 @@ function vote(id, rating) {
 }
 
 .top-left-overlay {
-  @apply absolute left-3 top-3 mb-3 w-9 h-9;
+  @apply absolute left-3 top-3 mb-3 w-20 h-9 flex justify-between;
   color: black;
-  display: none;
+  visibility: hidden;
 }
 .movie-panel:hover .top-left-overlay {
-  display: block;
+  visibility: visible;
 }
 
 .poster {

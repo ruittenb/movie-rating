@@ -7,8 +7,7 @@ defineProps({
 </script>
 
 <template>
-  <Genre v-for="name in names" :key="name" :name="name" class="mr-3" />
+  <Genre v-for="name in names" :key="name" :name="name" class="mr-2" />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
