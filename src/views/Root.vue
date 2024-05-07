@@ -39,7 +39,7 @@ function closeAddMoviePopup() {
     />
     <MainPage
       :is-add-movie-popup-open="isAddMoviePopupOpen"
-      :model-value="resetRatings"
+      :is-rating-reset-requested="resetRatings"
       @close-add-movie="closeAddMoviePopup"
       @stats-updated="handleStats"
       @ratings-were-reset="handleRatingsWereReset"

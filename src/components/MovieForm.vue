@@ -1,13 +1,14 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import ButtonElement from './ButtonElement.vue'
 import { useConstants } from '@/composables/useConstants'
 
 const props = defineProps({
+  create: Boolean,
   movie: Object
 })
 
-const emit = defineEmits(['add-movie', 'close-add-movie'])
+const emit = defineEmits(['add', 'close', 'update'])
 
 const { genres: allGenres } = useConstants()
 
@@ -17,8 +18,10 @@ const imageUrl = ref()
 const genres = ref()
 const inTheaters = ref()
 
+const formTitle = computed(() => (props.create ? 'Add Movie' : 'Edit Movie'))
+
 function closeForm() {
-  emit('close-add-movie')
+  emit('close')
 }
 
 function getSelectedGenres() {
@@ -40,7 +43,7 @@ function submitForm() {
     console.log('Missing mandatory field (name or genre)')
     return
   }
-  const newMovie = {
+  const movieData = {
     ...props.movie,
     name: name.value.value,
     description: description.value.value,
@@ -48,32 +51,36 @@ function submitForm() {
     genres: selectedGenres,
     inTheaters: inTheaters.value.value === 'on'
   }
-  emit('add-movie', newMovie)
+  if (props.create) {
+    emit('add', movieData)
+  } else {
+    emit('update', movieData)
+  }
 }
 </script>
 
 <template>
   <div class="movie-form">
-    <h1>Add Movie</h1>
+    <h1>{{ formTitle }}</h1>
     <p>
       <label>
         Name
         <br />
-        <input type="text" id="name" name="name" ref="name" />
+        <input type="text" id="name" name="name" ref="name" :value="movie.name" />
       </label>
     </p>
     <p>
       <label>
         Description
         <br />
-        <textarea id="description" name="description" ref="description" />
+        <textarea id="description" name="description" ref="description" :value="movie.description" />
       </label>
     </p>
     <p>
       <label>
         Image
         <br />
-        <input type="text" id="image_url" name="image_url" ref="imageUrl" />
+        <input type="text" id="image_url" name="image_url" ref="imageUrl" :value="movie.image" />
       </label>
     </p>
     <p>
@@ -81,7 +88,7 @@ function submitForm() {
         Genres
         <br />
         <select multiple="multiple" id="genres" name="genres" ref="genres" size="6">
-          <option v-for="genre in allGenres" :key="genre" :value="genre">
+          <option v-for="genre in allGenres" :key="genre" :selected="movie.genres.includes(genre)" :value="genre">
             {{ genre }}
           </option>
         </select>
@@ -89,13 +96,14 @@ function submitForm() {
     </p>
     <p>
       <label>
-        <input type="checkbox" ref="inTheaters" />
+        <input type="checkbox" ref="inTheaters" :checked="!!movie.inTheaters" />
         In theaters
       </label>
     </p>
     <div class="buttonbox">
-      <ButtonElement label="Cancel" @click="closeForm" />
-      <ButtonElement label="Add" :primary="true" @click="submitForm" />
+      <ButtonElement label="Cancel" class="w-24" @click="closeForm" />
+      <ButtonElement v-if="create" label="Add" primary class="w-24" @click="submitForm" />
+      <ButtonElement v-else label="Update" primary class="w-24" @click="submitForm" />
     </div>
   </div>
 </template>

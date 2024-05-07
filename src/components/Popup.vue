@@ -2,7 +2,7 @@
 
 <template>
   <div class="popup">
-    <slot> This is a popup</slot>
+    <slot>This is a popup</slot>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
   display: flex;
   place-items: center;
   justify-content: center;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100vw;

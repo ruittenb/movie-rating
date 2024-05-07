@@ -15,6 +15,6 @@ defineProps({
   border-radius: var(--radius);
   height: calc(2 * var(--radius));
   line-height: calc(2 * var(--radius));
-  font-size: 10px;
+  font-size: 12px;
 }
 </style>

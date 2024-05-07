@@ -1,13 +1,32 @@
 <script setup>
+import { ref } from 'vue'
+import ButtonElement from './ButtonElement.vue'
 import DigitStar from './DigitStar.vue'
 import Genres from './Genres.vue'
+import MovieForm from './MovieForm.vue'
+import Popup from './Popup.vue'
 import Rating from './Rating.vue'
 
 defineProps({
   movie: Object
 })
 
-const emit = defineEmits(['vote'])
+const emit = defineEmits(['update-movie', 'vote'])
+
+const isEditPopupVisible = ref(false)
+
+function updateMovie(movieData) {
+  emit('update-movie', movieData)
+  isEditPopupVisible.value = false
+}
+
+function handleEdit() {
+  isEditPopupVisible.value = true
+}
+
+function closePopup() {
+  isEditPopupVisible.value = false
+}
 
 function vote(id, rating) {
   emit('vote', id, rating)
@@ -16,19 +35,24 @@ function vote(id, rating) {
 
 <template>
   <div class="movie-panel inline-block bg-white text-gray-800 mb-4">
-    <div class="vertical-spreader flex flex-col justify-between">
-      <div>
-        <img :alt="movie.name" :src="movie.image" class="poster" />
-        <DigitStar :rating="movie.rating" />
-        <h1>{{ movie.name }}</h1>
-        <div class="mt-2 mb-3">
-          <Genres :names="movie.genres" />
-        </div>
-        <p class="h-[80px] text-xs overflow-y-auto">{{ movie.description }}</p>
+    <div class="vertical-spreader grid">
+      <img :alt="movie.name" :src="movie.image" class="poster" />
+      <DigitStar :rating="movie.rating" />
+      <div class="top-left-overlay">
+        <ButtonElement danger class="w-9"><FontAwesomeIcon icon="trash-can" /></ButtonElement>
+        <ButtonElement class="w-9" @click="handleEdit"><FontAwesomeIcon icon="pencil" /></ButtonElement>
       </div>
+      <h1>{{ movie.name }}</h1>
+      <div class="mt-2 mb-3">
+        <Genres :names="movie.genres" />
+      </div>
+      <p class="h-[80px] text-xs overflow-y-auto">{{ movie.description }}</p>
       <Rating :rating="movie.rating" class="w-full" @vote="(rating) => vote(movie.id, rating)" />
     </div>
   </div>
+  <Popup v-if="isEditPopupVisible">
+    <MovieForm :movie="movie" @close="closePopup" @update="updateMovie" />
+  </Popup>
 </template>
 
 <style scoped>
@@ -46,8 +70,17 @@ function vote(id, rating) {
 }
 
 .vertical-spreader {
-  height: 98%;
+  height: 99%;
   overflow: hidden;
+}
+
+.top-left-overlay {
+  @apply absolute left-3 top-3 mb-3 w-9 h-9;
+  color: black;
+  display: none;
+}
+.movie-panel:hover .top-left-overlay {
+  display: block;
 }
 
 .poster {

@@ -8,8 +8,8 @@ import MovieTable from '@/components/MovieTable.vue'
 import movieData from '../movies.json'
 
 const props = defineProps({
-  modelValue: Boolean,
-  isAddMoviePopupOpen: Boolean
+  isAddMoviePopupOpen: Boolean,
+  isRatingResetRequested: Boolean
 })
 
 const emit = defineEmits(['close-add-movie', 'ratings-were-reset', 'stats-updated'])
@@ -49,6 +49,11 @@ function addMovie(movie) {
   closePopup()
 }
 
+function updateMovie(newMovie) {
+  movies.value = movies.value.map((oldMovie) => (oldMovie.id !== newMovie.id ? oldMovie : newMovie))
+  writeData(movies.value)
+}
+
 watch(
   [totalNrMovies, averageRating],
   () => {
@@ -77,13 +82,13 @@ onBeforeMount(() => {
 
 <template>
   <div class="main-area px-6 py-5 flex flex-row flex-wrap gap-5">
-    <MoviePanel v-for="movie in sortedMovies" :key="movie.id" :movie="movie" @vote="(id, rating) => vote(id, rating)" />
+    <MoviePanel v-for="movie in sortedMovies" :key="movie.id" :movie="movie" @update-movie="updateMovie" @vote="(id, rating) => vote(id, rating)" />
   </div>
   <div>
     <MovieTable :movies="movies" />
   </div>
   <Popup v-if="isAddMoviePopupOpen">
-    <MovieForm :movie="{}" @close-add-movie="closePopup" @add-movie="addMovie" />
+    <MovieForm create :movie="{}" @close="closePopup" @add="addMovie" />
   </Popup>
 </template>
 
