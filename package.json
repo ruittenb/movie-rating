@@ -18,7 +18,8 @@
     "click-outside-vue3": "^4.0.1",
     "happy-dom": "^10.8.0",
     "vue": "^3.3.4",
-    "vue-good-table-next": "^0.2.1"
+    "vue-good-table-next": "^0.2.1",
+    "vue-types": "^5.1.2"
   },
   "devDependencies": {
     "@jdi/prettier-config-standard": "^4.0.0",
