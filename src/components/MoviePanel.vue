@@ -11,13 +11,17 @@ defineProps({
   movie: Object
 })
 
-const emit = defineEmits(['update-movie', 'vote'])
+const emit = defineEmits(['delete-movie', 'update-movie', 'vote'])
 
 const isEditPopupVisible = ref(false)
 
 function updateMovie(movieData) {
   emit('update-movie', movieData)
   isEditPopupVisible.value = false
+}
+
+function handleDelete(movieId) {
+  emit('delete-movie', { id: movieId })
 }
 
 function handleEdit() {
@@ -39,8 +43,12 @@ function vote(id, rating) {
       <img :alt="movie.name" :src="movie.image" class="poster" />
       <DigitStar :rating="movie.rating" />
       <div class="top-left-overlay">
-        <ButtonElement class="w-9" @click="handleEdit"><FontAwesomeIcon icon="pencil" /></ButtonElement>
-        <ButtonElement danger class="w-9"><FontAwesomeIcon icon="trash-can" /></ButtonElement>
+        <ButtonElement class="w-9" @click="handleEdit">
+          <FontAwesomeIcon icon="pencil" />
+        </ButtonElement>
+        <ButtonElement danger class="w-9" @click="() => handleDelete(movie.id)">
+          <FontAwesomeIcon icon="trash-can" />
+        </ButtonElement>
       </div>
       <h1>{{ movie.name }}</h1>
       <div class="mt-2 mb-3">

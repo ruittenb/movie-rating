@@ -17,6 +17,7 @@ const emit = defineEmits(['close-add-movie', 'ratings-were-reset', 'stats-update
 const { readData, writeData } = useStorage()
 
 const movies = ref([])
+const movieDataTemplate = { genres: [] }
 const sortedMovies = computed(() => [...movies.value].sort(byId))
 const totalNrMovies = computed(() => movies.value.length)
 const averageRating = computed(() => movies.value.map((movie) => movie.rating).reduce((a, b) => a + b, 0) / totalNrMovies.value)
@@ -47,6 +48,11 @@ function addMovie(movie) {
   movies.value.push({ id: lastId.value + 1, ...movie })
   writeData(movies.value)
   closePopup()
+}
+
+function deleteMovie(movieData) {
+  movies.value = movies.value.filter((movie) => movie.id !== movieData.id)
+  writeData(movies.value)
 }
 
 function updateMovie(newMovie) {
@@ -81,14 +87,21 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div class="main-area px-6 py-5 flex flex-row flex-wrap gap-5">
-    <MoviePanel v-for="movie in sortedMovies" :key="movie.id" :movie="movie" @update-movie="updateMovie" @vote="(id, rating) => vote(id, rating)" />
+  <div class="main-area px-6 py-5 mt-16 flex flex-row flex-wrap gap-5">
+    <MoviePanel
+      v-for="movie in sortedMovies"
+      :key="movie.id"
+      :movie="movie"
+      @delete-movie="deleteMovie"
+      @update-movie="updateMovie"
+      @vote="(id, rating) => vote(id, rating)"
+    />
   </div>
   <div>
     <MovieTable :movies="movies" />
   </div>
   <Popup v-if="isAddMoviePopupOpen">
-    <MovieForm create :movie="{}" @close="closePopup" @add="addMovie" />
+    <MovieForm :create="true" :movie="movieDataTemplate" @close="closePopup" @add="addMovie" />
   </Popup>
 </template>
 

@@ -102,13 +102,25 @@
       "id": 9,
       "name": "La haine",
       "description": "24 hours in the lives of three young men in the French suburbs the day after a violent riot.",
-      "image": "https://i.postimg.cc/MK8S1L79/06cytrll4h151.png",
+      "image": "https://media.senscritique.com/media/000004673810/source_big/La_Haine.jpg",
       "genres": [
         "Crime",
         "Drama"
       ],
       "inTheaters": true,
       "rating": 8
+    },
+    {
+      "id": 10,
+      "name": "Slurf de dappere Smurf",
+      "genres": [
+        "Adventure",
+        "Animation"
+      ],
+      "image": "https://i.postimg.cc/GhKqHwVc/20241001-163352.jpg",
+      "description": "Slurf komt erachter dat alle andere smurfen broekjes dragen. Donnie legt hem uit waarom.",
+      "inTheaters": true,
+      "rating": 4
     }
   ]
 }

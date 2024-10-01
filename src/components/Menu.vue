@@ -46,6 +46,8 @@ function resetRatings() {
 
 <style scoped>
 .menu {
+  position: fixed;
+  top: 0;
   user-select: none;
   -webkit-user-select: none;
   display: flex;
@@ -55,6 +57,9 @@ function resetRatings() {
   width: 100%;
   height: 64px;
   padding: 8px var(--body-margin-x);
+  background-color: black;
+  z-index: 100;
+  border-bottom: 1px solid white;
 }
 
 .hamburger {

@@ -96,7 +96,7 @@ function submitForm() {
     </p>
     <p>
       <label>
-        <input type="checkbox" ref="inTheaters" :checked="!!movie.inTheaters" />
+        <input type="checkbox" id="inTheaters" ref="inTheaters" :checked="!!movie.inTheaters" />
         In theaters
       </label>
     </p>

@@ -2,6 +2,7 @@ export function useConstants() {
   const genres = [
     'Action',
     'Adventure',
+    'Animation',
     'Arthouse',
     'Comedy',
     'Crime',
