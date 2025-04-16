@@ -54,7 +54,7 @@
       "id": 5,
       "name": "Ja zuster, nee zuster",
       "description": "A cheerful stylized musical comedy, the story takes place in the guest-house of sister Klivia. The inhabitants are cheerful and good-hearted, but when the grumpy neighbor Boordevol discovers that one of the inhabitants is a former thief, he attempts to have the guest-house shut down.",
-      "image": "https://m.media-amazon.com/images/M/MV5BODFmNDdjOGMtZjA2Yy00NTEyLWE3ZGMtYjhkMDA3YjJjOTNjXkEyXkFqcGdeQXVyMzExODEzNDA@._V1_FMjpg_UX752_.jpg",
+      "image": "https://nieuwdezeweek.nl/media/cache/e7/8c/e78cdf208721885df45b9fbb0ae3cdaf.jpg",
       "rating": 5,
       "genres": [
         "Comedy",
@@ -66,7 +66,7 @@
       "id": 6,
       "name": "The Fellowship of the Ring",
       "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
-      "image": "https://m.media-amazon.com/images/M/MV5BMTlmYzVjNGUtNTc3MC00YjQ2LWIyY2ItMjY0ODU4NWJmZThhXkEyXkFqcGdeQXVyMzExODEzNDA@._V1_FMjpg_UX750_.jpg",
+      "image": "https://image.tmdb.org/t/p/original/b4XZizlvqQkZno8cT3VPBYTGudB.jpg",
       "genres": [
         "Adventure",
         "Fantasy"
@@ -121,6 +121,19 @@
       "description": "Slurf komt erachter dat alle andere smurfen broekjes dragen. Donnie legt hem uit waarom.",
       "inTheaters": true,
       "rating": 4
+    },
+    {
+      "id": 11,
+      "name": "Jaws",
+      "genres": [
+        "Adventure",
+        "Horror"
+      ],
+      "image": "https://assets.mubicdn.net/images/notebook/post_images/31814/images-w1400.jpg",
+      "description": "When a massive killer shark unleashes chaos on a beach community off Long Island, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.",
+      "inTheaters": false,
+      "rating": 8
     }
   ]
 }
+
