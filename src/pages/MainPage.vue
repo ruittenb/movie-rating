@@ -20,6 +20,7 @@ const movies = ref([])
 const movieDataTemplate = { genres: [] }
 const sortedMovies = computed(() => [...movies.value].sort(byId))
 const totalNrMovies = computed(() => movies.value.length)
+// averateRating: we may be dividing by zero here, but we will allow it and detect it later
 const averageRating = computed(() => movies.value.map((movie) => movie.rating).reduce((a, b) => a + b, 0) / totalNrMovies.value)
 const lastId = computed(() => Math.max(...movies.value.map((movie) => movie.id)))
 
@@ -69,7 +70,7 @@ watch(
 )
 
 watch(
-  () => props.modelValue,
+  () => props.isRatingResetRequested,
   (newValue) => {
     if (newValue) {
       resetRatings()
