@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import ButtonElement from './ButtonElement.vue'
 import DigitStar from './DigitStar.vue'
 import Genres from './Genres.vue'
@@ -7,33 +7,45 @@ import MovieForm from './MovieForm.vue'
 import Popup from './Popup.vue'
 import Rating from './Rating.vue'
 
-defineProps({
+const props = defineProps({
   movie: Object
 })
 
-const emit = defineEmits(['delete-movie', 'update-movie', 'vote'])
+const emit = defineEmits([
+  'edit',
+  'remove',
+  'update-movie', // TODO remove
+  'update:rating'
+])
 
 const isEditPopupVisible = ref(false)
+
+const isNotRated = computed(() =>
+    props.movie.rating === Infinity ||
+    isNaN(props.movie.rating) ||
+    props.movie.rating <= 0
+)
 
 function updateMovie(movieData) {
   emit('update-movie', movieData)
   isEditPopupVisible.value = false
 }
 
-function handleDelete(movieId) {
-  emit('delete-movie', { id: movieId })
-}
-
-function handleEdit() {
-  isEditPopupVisible.value = true
-}
-
 function closePopup() {
   isEditPopupVisible.value = false
 }
 
-function vote(id, rating) {
-  emit('vote', id, rating)
+function handleRemove(movieId) {
+  emit('remove', movieId)
+}
+
+function handleEdit(movieId) {
+  emit('edit', movieId)
+  isEditPopupVisible.value = true
+}
+
+function handleUpdateRating(id, rating) {
+  emit('update:rating', id, rating)
 }
 </script>
 
@@ -43,10 +55,10 @@ function vote(id, rating) {
       <img :alt="movie.name" :src="movie.image" class="poster" />
       <DigitStar :rating="movie.rating" />
       <div class="top-left-overlay">
-        <ButtonElement class="w-9" @click="handleEdit">
+        <ButtonElement class="w-9" @click="() => handleEdit(movie.id)">
           <FontAwesomeIcon icon="pencil" />
         </ButtonElement>
-        <ButtonElement danger class="w-9" @click="() => handleDelete(movie.id)">
+        <ButtonElement danger class="w-9" @click="() => handleRemove(movie.id)">
           <FontAwesomeIcon icon="trash-can" />
         </ButtonElement>
       </div>
@@ -55,7 +67,7 @@ function vote(id, rating) {
         <Genres :names="movie.genres" />
       </div>
       <p class="h-[80px] text-xs overflow-y-auto">{{ movie.description }}</p>
-      <Rating :rating="movie.rating" class="w-full" @vote="(rating) => vote(movie.id, rating)" />
+      <Rating :rating="movie.rating" class="w-full" @vote="(rating) => handleUpdateRating(movie.id, rating)" />
     </div>
   </div>
   <Popup v-if="isEditPopupVisible">
@@ -75,11 +87,6 @@ function vote(id, rating) {
   height: var(--box-height);
   padding-left: var(--margin);
   padding-right: var(--margin);
-}
-
-.vertical-spreader {
-  height: 99%;
-  overflow: hidden;
 }
 
 .top-left-overlay {
@@ -106,8 +113,9 @@ h1 {
   white-space: nowrap;
 }
 
-.movie:hover {
-  overflow: visible;
+.vertical-spreader {
+  height: 99%;
+  overflow: hidden;
 }
 
 .vertical-spreader:hover {

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onBeforeMount, ref, watch } from 'vue'
 import { useStorage } from '@/composables/useStorage'
-import MoviePanel from '@/components/MoviePanel.vue'
+import MovieItem from '@/components/MovieItem.vue'
 import Popup from '@/components/Popup.vue'
 import MovieForm from '@/components/MovieForm.vue'
 import MovieTable from '@/components/MovieTable.vue'
@@ -25,20 +25,11 @@ const averageRating = computed(() => movies.value.map((movie) => movie.rating).r
 const lastId = computed(() => Math.max(...movies.value.map((movie) => movie.id)))
 
 function byId(a, b) {
-  return a.id - b.id
+  return Math.sign(a.id - b.id)
 }
 
 function resetRatings() {
   movies.value = movies.value.map((movie) => ({ ...movie, rating: null }))
-}
-
-function vote(id, rating) {
-  const votedMovie = movies.value.find((movie) => movie.id === id)
-  if (!votedMovie) {
-    return
-  }
-  votedMovie.rating = rating
-  writeData(movies.value)
 }
 
 function closePopup() {
@@ -51,13 +42,26 @@ function addMovie(movie) {
   closePopup()
 }
 
-function deleteMovie(movieData) {
-  movies.value = movies.value.filter((movie) => movie.id !== movieData.id)
+function updateMovie(newMovie) {
+  movies.value = movies.value.map((oldMovie) => (oldMovie.id !== newMovie.id ? oldMovie : newMovie))
   writeData(movies.value)
 }
 
-function updateMovie(newMovie) {
-  movies.value = movies.value.map((oldMovie) => (oldMovie.id !== newMovie.id ? oldMovie : newMovie))
+function handleEditMovie(movieId) {
+  // TODO
+}
+
+function handleUpdateRating(movieId, rating) {
+  const votedMovie = movies.value.find((movie) => movie.id === movieId)
+  if (!votedMovie) {
+    return
+  }
+  votedMovie.rating = rating
+  writeData(movies.value)
+}
+
+function handleRemoveMovie(movieId) {
+  movies.value = movies.value.filter((movie) => movie.id !== movieId)
   writeData(movies.value)
 }
 
@@ -89,13 +93,14 @@ onBeforeMount(() => {
 
 <template>
   <div class="main-area px-6 py-5 mt-16 flex flex-row flex-wrap gap-5">
-    <MoviePanel
+    <MovieItem
       v-for="movie in sortedMovies"
       :key="movie.id"
       :movie="movie"
-      @delete-movie="deleteMovie"
+      @edit="handleEditMovie"
+      @remove="handleRemoveMovie"
       @update-movie="updateMovie"
-      @vote="(id, rating) => vote(id, rating)"
+      @update:rating="(id, rating) => handleUpdateRating(id, rating)"
     />
   </div>
   <div>
