@@ -1,10 +1,8 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import ButtonElement from './ButtonElement.vue'
 import DigitStar from './DigitStar.vue'
 import Genres from './Genres.vue'
-import MovieForm from './MovieForm.vue'
-import Popup from './Popup.vue'
 import Rating from './Rating.vue'
 
 const props = defineProps({
@@ -14,34 +12,22 @@ const props = defineProps({
 const emit = defineEmits([
   'edit',
   'remove',
-  'update-movie', // TODO remove
   'update:rating'
 ])
 
-const isEditPopupVisible = ref(false)
-
 const isNotRated = computed(() =>
     props.movie.rating === Infinity ||
+    props.movie.rating === -Infinity ||
     isNaN(props.movie.rating) ||
     props.movie.rating <= 0
 )
 
-function updateMovie(movieData) {
-  emit('update-movie', movieData)
-  isEditPopupVisible.value = false
-}
-
-function closePopup() {
-  isEditPopupVisible.value = false
+function handleEdit(movieId) {
+  emit('edit', movieId)
 }
 
 function handleRemove(movieId) {
   emit('remove', movieId)
-}
-
-function handleEdit(movieId) {
-  emit('edit', movieId)
-  isEditPopupVisible.value = true
 }
 
 function handleUpdateRating(id, rating) {
@@ -70,9 +56,6 @@ function handleUpdateRating(id, rating) {
       <Rating :rating="movie.rating" class="w-full" @vote="(rating) => handleUpdateRating(movie.id, rating)" />
     </div>
   </div>
-  <Popup v-if="isEditPopupVisible">
-    <MovieForm :movie="movie" @close="closePopup" @update="updateMovie" />
-  </Popup>
 </template>
 
 <style scoped>

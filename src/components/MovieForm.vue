@@ -1,62 +1,59 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch, onMounted } from 'vue'
 import ButtonElement from './ButtonElement.vue'
 import { useConstants } from '@/composables/useConstants'
 
 const props = defineProps({
-  create: Boolean,
-  movie: Object
+  modelValue: Object
 })
 
-const emit = defineEmits(['add', 'close', 'update'])
+const emit = defineEmits([
+  'cancel',
+  'update:modelValue'
+])
 
 const { genres: allGenres } = useConstants()
 
-const name = ref()
-const description = ref()
-const imageUrl = ref()
-const genres = ref()
-const inTheaters = ref()
+const movieData = ref({})
 
-const formTitle = computed(() => (props.create ? 'Add Movie' : 'Edit Movie'))
+const isCreateMode = computed(() => !movieData.value.id)
+const formTitle = computed(() => isCreateMode.value ? 'Add Movie' : 'Edit Movie')
+const primaryButtonLabel = computed(() => isCreateMode.value ? 'Add' : 'Update')
+const isValid = computed(() => !!movieData.value.name && movieData.value.genres.length)
+const invalidReason = computed(() => {
+  if (!movieData.value.name) {
+    return 'Name is mandatory'
+  } else if (!movieData.value.genres.length) {
+    return 'Genre is mandatory'
+  }
+  return ''
+})
 
-function closeForm() {
-  emit('close')
+function handleCancel() {
+  emit('cancel')
 }
 
-function getSelectedGenres() {
-  return Array.prototype.reduce.call(
-    genres.value.children,
-    (acc, option) => {
-      if (option.selected) {
-        acc.push(option.value)
-      }
-      return acc
-    },
-    []
-  )
+function handleSubmit() {
+  if (isValid.value) {
+    emit('update:modelValue', movieData.value)
+  }
 }
 
-function submitForm() {
-  const selectedGenres = getSelectedGenres()
-  if (!name.value.value || !selectedGenres) {
-    console.log('Missing mandatory field (name or genre)')
-    return
+watch(
+  movieData,
+  (newData) => {
+    console.log('updated movie data:', newData)
+  }, {
+    deep: true
   }
-  const movieData = {
-    ...props.movie,
-    name: name.value.value,
-    description: description.value.value,
-    image: imageUrl.value.value,
-    genres: selectedGenres,
-    inTheaters: inTheaters.value.value === 'on'
+)
+
+onMounted(() => {
+  movieData.value = props.modelValue ? props.modelValue : {}
+  if (!('genres' in movieData.value)) {
+    movieData.value.genres = []
   }
-  if (props.create) {
-    emit('add', movieData)
-  } else {
-    emit('update', movieData)
-  }
-}
+})
 </script>
 
 <template>
@@ -66,29 +63,29 @@ function submitForm() {
       <label>
         Name
         <br />
-        <input type="text" id="name" name="name" ref="name" :value="movie.name" />
+        <input type="text" id="name" name="name" v-model="movieData.name" />
       </label>
     </p>
     <p>
       <label>
         Description
         <br />
-        <textarea id="description" name="description" ref="description" :value="movie.description" />
+        <textarea id="description" name="description" v-model="movieData.description" />
       </label>
     </p>
     <p>
       <label>
         Image
         <br />
-        <input type="text" id="image_url" name="image_url" ref="imageUrl" :value="movie.image" />
+        <input type="text" id="image_url" name="image_url" v-model="movieData.image" />
       </label>
     </p>
     <p>
       <label>
         Genres
         <br />
-        <select multiple="multiple" id="genres" name="genres" ref="genres" size="6">
-          <option v-for="genre in allGenres" :key="genre" :selected="movie.genres.includes(genre)" :value="genre">
+        <select id="genres" multiple="multiple" name="genres" v-model="movieData.genres" size="6">
+          <option v-for="genre in allGenres" :key="genre" :value="genre">
             {{ genre }}
           </option>
         </select>
@@ -96,14 +93,20 @@ function submitForm() {
     </p>
     <p>
       <label>
-        <input type="checkbox" id="inTheaters" ref="inTheaters" :checked="!!movie.inTheaters" />
+        <input type="checkbox" id="inTheaters" v-model="movieData.inTheaters" />
         In theaters
       </label>
     </p>
     <div class="buttonbox">
-      <ButtonElement label="Cancel" class="w-24" @click="closeForm" />
-      <ButtonElement v-if="create" label="Add" primary class="w-24" @click="submitForm" />
-      <ButtonElement v-else label="Update" primary class="w-24" @click="submitForm" />
+      <ButtonElement label="Cancel" class="w-24" @click="handleCancel" />
+      <ButtonElement
+        :disabled="!isValid"
+        :label="primaryButtonLabel"
+        primary
+        :title="invalidReason"
+        class="w-24"
+        @click="handleSubmit"
+      />
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@ defineProps({
   totalNrMovies: Number
 })
 
-const emit = defineEmits(['open-add-movie', 'reset-all-ratings'])
+const emit = defineEmits(['add-movie', 'reset-all-ratings'])
 
 const isOpen = ref(false)
 
@@ -21,7 +21,7 @@ function closeMenu() {
 
 function addMovie() {
   closeMenu()
-  emit('open-add-movie')
+  emit('add-movie')
 }
 
 function resetRatings() {

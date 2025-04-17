@@ -4,7 +4,8 @@ import { computed } from 'vue'
 const props = defineProps({
   label: String,
   primary: Boolean,
-  danger: Boolean
+  danger: Boolean,
+  disabled: Boolean
 })
 
 const classNames = computed(() => ({
@@ -14,7 +15,7 @@ const classNames = computed(() => ({
 </script>
 
 <template>
-  <button :class="classNames">
+  <button :disabled="disabled" :class="classNames">
     <slot>{{ label }}</slot>
   </button>
 </template>
@@ -27,7 +28,7 @@ button {
   padding: 4px;
 }
 
-button.primary {
+button.primary:not(:disabled) {
   background-color: var(--primary-color);
   border: 2px outset lightgreen;
 }
@@ -37,7 +38,11 @@ button.danger {
   color: lightgrey;
 }
 
-button:active {
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:active:not(:disabled) {
   border-style: inset;
 }
 </style>
