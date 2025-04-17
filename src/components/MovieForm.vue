@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch, onMounted } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import ButtonElement from './ButtonElement.vue'
 import { useConstants } from '@/composables/useConstants'
 
@@ -38,15 +38,6 @@ function handleSubmit() {
     emit('update:modelValue', movieData.value)
   }
 }
-
-watch(
-  movieData,
-  (newData) => {
-    console.log('updated movie data:', newData)
-  }, {
-    deep: true
-  }
-)
 
 onMounted(() => {
   movieData.value = props.modelValue ? props.modelValue : {}
