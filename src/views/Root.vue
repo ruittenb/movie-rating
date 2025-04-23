@@ -5,7 +5,7 @@ import MovieForm from '@/components/MovieForm.vue'
 import Popup from '@/components/Popup.vue'
 import { useMovies } from '@/composables/useMovies'
 
-const { averageRating, getMovie, resetRatings, totalNrMovies, updateMovie } = useMovies()
+const { averageRating, getMovie, resetAllMovieData, resetRatings, totalNrMovies, updateMovie } = useMovies()
 
 const formMovie = ref()
 const isMovieFormOpen = ref(false)
@@ -15,7 +15,7 @@ function handleResetRatings() {
 }
 
 function handleResetMovieData() {
-  console.log('resetting all movie data') // TODO
+  resetAllMovieData()
 }
 
 function handleAddMovie() {

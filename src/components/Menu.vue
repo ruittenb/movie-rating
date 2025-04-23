@@ -46,7 +46,7 @@ function resetMovieData() {
       <FontAwesomeIcon icon="bars" class="hamburger" @click="toggleMenu" />
       <ul v-show="isOpen" class="bg-white m-0 p-1.5">
         <li @click="addMovie"><FontAwesomeIcon icon="circle-plus" class="plus" />Add Movie</li>
-        <hr class="py-2" />
+        <hr />
         <li @click="resetRatings"><FontAwesomeIcon icon="backward-step" class="danger" />Reset all Ratings</li>
         <li @click="resetMovieData"><FontAwesomeIcon icon="backward-fast" class="danger" />Reset all Movie Data</li>
       </ul>
@@ -78,6 +78,10 @@ function resetMovieData() {
 
 .plus {
   color: var(--add-color);
+}
+
+hr {
+  @apply border-gray-400 my-2;
 }
 
 ul {

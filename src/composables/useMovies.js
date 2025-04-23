@@ -2,7 +2,7 @@ import { computed, ref } from "vue";
 import { cloneDeep } from 'lodash-es';
 import { useStorage } from "@/composables/useStorage";
 import { useUtils } from "@/composables/useUtils";
-import movieData from '../movies.json'
+import jsonMovieData from '../movies.json'
 
 const { retrieveData, storeData } = useStorage()
 const { byId } = useUtils()
@@ -34,6 +34,11 @@ export function useMovies() {
         storeData(movies.value)
     }
 
+    function resetAllMovieData() {
+        movies.value = jsonMovieData.items
+        storeData(movies.value)
+    }
+
     function rateMovie(id, rating) {
         const votedMovie = movies.value.find((movie) => movie.id === id)
         if (!votedMovie) {
@@ -58,15 +63,27 @@ export function useMovies() {
     }
 
     function getMovie(id) {
-        return movies.value.find((movie) => movie.id === id)
+        return cloneDeep(
+            movies.value.find((movie) => movie.id === id)
+        )
     }
 
     onBeforeMount(() => {
         movies.value = retrieveData()
         if (movies.value === null) {
-            movies.value = movieData.items
+            movies.value = jsonMovieData.items
         }
     })
 
-    return { movies: sortedMovies, averageRating, getMovie, rateMovie, removeMovie, resetRatings, totalNrMovies, updateMovie }
+    return {
+        movies: sortedMovies,
+        averageRating,
+        getMovie,
+        rateMovie,
+        removeMovie,
+        resetAllMovieData,
+        resetRatings,
+        totalNrMovies,
+        updateMovie
+    }
 }
