@@ -2,13 +2,13 @@ const PREFIX = 'ruitjeRatings'
 const storage = localStorage
 
 export function useStorage() {
-    function writeData(data) {
+    function storeData(data) {
         storage.setItem(`${PREFIX}.items`, JSON.stringify(data))
     }
 
-    function readData() {
+    function retrieveData() {
         return JSON.parse(storage.getItem(`${PREFIX}.items`))
     }
 
-    return { readData, writeData }
+    return { retrieveData, storeData }
 }

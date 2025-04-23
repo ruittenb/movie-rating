@@ -89,7 +89,7 @@ onMounted(() => {
       </label>
     </p>
     <div class="buttonbox">
-      <ButtonElement label="Cancel" class="w-24" @click="handleCancel" />
+      <ButtonElement label="Cancel" secondary class="w-24" @click="handleCancel" />
       <ButtonElement
         :disabled="!isValid"
         :label="primaryButtonLabel"

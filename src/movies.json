@@ -91,7 +91,7 @@
       "id": 8,
       "name": "Manos: The Hands of Fate",
       "description": "A family gets lost on the road and stumbles upon a hidden, underground, devil-worshiping cult led by the fearsome Master and his servant Torgo.",
-      "image": "https://www.moriareviews.com/rongulator/wp-content/uploads/Manos-The-Hands-of-Fate-1966-poster-2.png",
+      "image": "https://image.tmdb.org/t/p/original/eblPrqZYnUaDJcxwiV9VCXoZfbU.jpg",
       "genres": [
         "Horror"
       ],
@@ -133,6 +133,17 @@
       "description": "When a massive killer shark unleashes chaos on a beach community off Long Island, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.",
       "inTheaters": false,
       "rating": 8
+    },
+    {
+      "id": 12,
+      "name": "Life of Brian",
+      "genres": [
+        "Comedy"
+      ],
+      "image": "https://m.media-amazon.com/images/M/MV5BNDMzY2E4NjEtMTJiZC00Y2UzLWFiM2MtZWVhNTg5OGQxNjk1XkEyXkFqcGc@._V1_FMjpg_UY2903_.jpg",
+      "description": "Born on the original Christmas in the stable next door to Jesus Christ, Brian of Nazareth spends his life being mistaken for a messiah.",
+      "inTheaters": false,
+      "rating": 7
     }
   ]
 }

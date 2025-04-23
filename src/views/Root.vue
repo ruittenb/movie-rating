@@ -1,55 +1,40 @@
 <script setup>
-import { computed, ref } from 'vue'
 import MainPage from '../pages/MainPage.vue'
 import Menu from '@/components/Menu.vue'
 import MovieForm from '@/components/MovieForm.vue'
 import Popup from '@/components/Popup.vue'
+import { useMovies } from '@/composables/useMovies'
 
-const movieBeingEdited = ref()
+const { averageRating, getMovie, resetRatings, totalNrMovies, updateMovie } = useMovies()
 
+const formMovie = ref()
 const isMovieFormOpen = ref(false)
-const totalNrMovies = ref()
-const averageRating = ref()
-const resetRatings = ref(false)
 
-const lastId = computed(() => Math.max(...movies.value.map((movie) => movie.id)))
+function handleResetRatings() {
+  resetRatings()
+}
+
+function handleResetMovieData() {
+  console.log('resetting all movie data') // TODO
+}
 
 function handleAddMovie() {
-  movieBeingEdited.value = null
+  formMovie.value = null
   openMovieForm()
 }
 
 function handleEditMovie(movieId) {
-  movieBeingEdited.value = movies.value.find((movie) => movie.id === movieId)
+  formMovie.value = getMovie(movieId)
   openMovieForm()
 }
 
-function handleRemoveMovie(movieId) {
-  movies.value = movies.value.filter((movie) => movie.id !== movieId)
-  writeData(movies.value)
+function handleSubmit(movieData) {
+  updateMovie(movieData)
+  closeMovieForm()
 }
 
-function handleResetRatings() {
-  resetRatings.value = true
-}
-
-function handleRatingsWereReset() {
-  resetRatings.value = false
-}
-
-function handleStats({ totalNrMovies: total, averageRating: rating }) {
-  totalNrMovies.value = total
-  averageRating.value = rating
-}
-
-function handleUpdateMovie(movieData) {
-  if (movieData.id) {
-    movies.value = movies.value.map((oldMovie) => (oldMovie.id !== movieData.id ? oldMovie : newMovie))
-  } else {
-    movies.value.push({ id: lastId.value + 1, ...movie })
-  }
-  writeData(movies.value)
-  closePopup()
+function handleCancel() {
+  closeMovieForm()
 }
 
 function openMovieForm() {
@@ -68,19 +53,16 @@ function closeMovieForm() {
       :total-nr-movies="totalNrMovies"
       @add-movie="handleAddMovie"
       @reset-all-ratings="handleResetRatings"
+      @reset-all-movie-data="handleResetMovieData"
     />
     <MainPage
-      :is-rating-reset-requested="resetRatings"
       @edit="handleEditMovie"
-      @remove="handleRemoveMovie"
-      @stats-updated="handleStats"
-      @ratings-were-reset="handleRatingsWereReset"
     />
     <Popup v-if="isMovieFormOpen">
       <MovieForm
-        :model-value="movieBeingEdited"
-        @cancel="closeMovieForm"
-        @update:model-value="handleUpdateMovie"
+        :model-value="formMovie"
+        @cancel="handleCancel"
+        @update:model-value="handleSubmit"
       />
     </Popup>
   </div>

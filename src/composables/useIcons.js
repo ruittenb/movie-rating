@@ -1,5 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
+  faBackwardFast,
+  faBackwardStep,
   faBars,
   faCirclePlus,
   faMoneyBillWave,
@@ -12,5 +14,16 @@ import {
 
 export function useIcons() {
   // prepare icons
-  library.add(faBars, faCirclePlus, faMoneyBillWave, faNewspaper, faPencil, faRotateLeft, faStar, faTrashCan)
+  library.add(
+      faBackwardFast,
+      faBackwardStep,
+      faBars,
+      faCirclePlus,
+      faMoneyBillWave,
+      faNewspaper,
+      faPencil,
+      faRotateLeft,
+      faStar,
+      faTrashCan
+  )
 }
