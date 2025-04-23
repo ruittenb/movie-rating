@@ -12,7 +12,7 @@ function classes(num) {
 }
 
 function formatRating(num) {
-  return num === null ? '-' : num
+  return num ? num : '-'
 }
 
 function vote(num) {

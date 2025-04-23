@@ -14,7 +14,7 @@ useIcons()
   --body-margin-x: 1.5rem;
   --border-radius: 6px;
   --primary-color: mediumseagreen;
-  --secondary-color: mediumseagreen;
+  --secondary-color: goldenrod;
   --tertiary-color: darkgray;
   --danger-color: darkred;
   --add-color: darkgreen;

@@ -15,11 +15,10 @@ const emit = defineEmits([
   'update:rating'
 ])
 
-const isNotRated = computed(() =>
-    props.movie.rating === Infinity ||
-    props.movie.rating === -Infinity ||
-    isNaN(props.movie.rating) ||
-    props.movie.rating <= 0
+const isRated = computed(() =>
+    props.movie.rating &&
+    props.movie.rating !== Infinity &&
+    props.movie.rating !== -Infinity
 )
 
 function handleEdit(movieId) {
