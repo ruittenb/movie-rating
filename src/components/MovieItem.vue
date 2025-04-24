@@ -32,12 +32,21 @@ function handleRemove(movieId) {
 function handleUpdateRating(id, rating) {
   emit('update:rating', id, rating)
 }
+
+function handleImgError(event) {
+  event.target.style.display = 'none';
+}
+function handleImgLoad(event) {
+  event.target.style.display = 'inline';
+}
 </script>
 
 <template>
   <div class="movie-panel inline-block bg-white text-gray-800 mb-4">
     <div class="vertical-spreader grid">
-      <img :alt="movie.name" :src="movie.image" class="poster" />
+      <div class="poster default-img">
+        <img :alt="movie.name" :src="movie.image" class="poster" @error="handleImgError" @load="handleImgLoad"/>
+      </div>
       <DigitStar :rating="movie.rating" />
       <div class="top-left-overlay">
         <ButtonElement class="w-9" @click="() => handleEdit(movie.id)">
@@ -85,6 +94,10 @@ function handleUpdateRating(id, rating) {
   width: var(--width);
   height: var(--poster-height);
   left: 0;
+}
+
+.default-img {
+  background-image: url("../assets/default-movie.png");
 }
 
 h1 {

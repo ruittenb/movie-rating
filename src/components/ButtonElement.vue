@@ -40,7 +40,7 @@ button.secondary:not(:disabled) {
 }
 button.danger {
   background-color: var(--danger-color);
-  border: 2px outset lightcoral;
+  border: 2px outset color-mix(in hsl, var(--danger-color), white 50%);
   color: lightgrey;
 }
 
