@@ -22,9 +22,9 @@ const primaryButtonLabel = computed(() => isCreateMode.value ? 'Add' : 'Update')
 const isValid = computed(() => !!movieData.value.name && movieData.value.genres.length)
 const invalidReason = computed(() => {
   if (!movieData.value.name) {
-    return 'Name is mandatory'
+    return 'Name is required'
   } else if (!movieData.value.genres.length) {
-    return 'Genre is mandatory'
+    return 'Genre is required'
   }
   return ''
 })
@@ -94,8 +94,8 @@ onMounted(() => {
         :disabled="!isValid"
         :label="primaryButtonLabel"
         primary
-        :title="invalidReason"
-        class="w-24"
+        :data-title="`⚠️&nbsp;&nbsp;${invalidReason}`"
+        class="tooltip-button w-24"
         @click="handleSubmit"
       />
     </div>
@@ -152,5 +152,23 @@ input[type='checkbox'] {
   display: flex;
   justify-content: flex-end;
   gap: 20px;
+}
+
+.tooltip-button {
+  position: relative;
+}
+
+.tooltip-button:disabled:hover::after {
+  display: block;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  background-color: var(--danger-color);
+  padding: 10px 30px;
+  border-radius: var(--border-radius);
+  content: attr(data-title);
+  z-index: 50;
 }
 </style>
