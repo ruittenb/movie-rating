@@ -144,6 +144,19 @@
       "description": "Born on the original Christmas in the stable next door to Jesus Christ, Brian of Nazareth spends his life being mistaken for a messiah.",
       "inTheaters": false,
       "rating": 7
+    },
+    {
+      "id": 13,
+      "name": "Serenity",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Sci-Fi"
+      ],
+      "image": "https://image.tmdb.org/t/p/original/ckDo5vnRKehJ2qu8U95c7QcvGUm.jpg",
+      "description": "The crew of the ship Serenity try to evade an assassin sent to recapture telepath River.",
+      "inTheaters": false,
+      "rating": 7
     }
   ]
 }
