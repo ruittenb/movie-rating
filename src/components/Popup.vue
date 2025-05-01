@@ -18,5 +18,6 @@
   height: 100%;
   z-index: 1000;
   background-color: #0008;
+  backdrop-filter: blur(4px);
 }
 </style>
