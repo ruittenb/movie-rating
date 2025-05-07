@@ -1,14 +1,17 @@
 <script setup>
+import { computed } from "vue";
 import MainPage from '../pages/MainPage.vue'
 import Menu from '@/components/Menu.vue'
-import MovieForm from '@/components/MovieForm.vue'
-import Popup from '@/components/Popup.vue'
 import { useMovies } from '@/composables/useMovies'
+
+const Modal = defineAsyncComponent(() => import('@/components/Modal.vue'))
+const MovieForm = defineAsyncComponent(() => import('@/components/MovieForm.vue'))
 
 const { averageRating, getMovie, resetAllMovieData, resetRatings, totalNrMovies, updateMovie } = useMovies()
 
 const formMovie = ref()
 const isMovieFormOpen = ref(false)
+const formTitle = computed(() => formMovie.value ? 'Edit Movie' : 'Add Movie')
 
 function handleResetRatings() {
   resetRatings()
@@ -58,13 +61,17 @@ function closeMovieForm() {
     <MainPage
       @edit="handleEditMovie"
     />
-    <Popup v-if="isMovieFormOpen">
+    <Modal
+      v-if="isMovieFormOpen"
+      :title="formTitle"
+      @close="handleCancel"
+    >
       <MovieForm
         :model-value="formMovie"
         @cancel="handleCancel"
         @update:model-value="handleSubmit"
       />
-    </Popup>
+    </Modal>
   </div>
 </template>
 

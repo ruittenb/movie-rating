@@ -17,7 +17,6 @@ const { genres: allGenres } = useConstants()
 const movieData = ref({})
 
 const isCreateMode = computed(() => !movieData.value.id)
-const formTitle = computed(() => isCreateMode.value ? 'Add Movie' : 'Edit Movie')
 const primaryButtonLabel = computed(() => isCreateMode.value ? 'Add' : 'Update')
 const isValid = computed(() => !!movieData.value.name && movieData.value.genres.length)
 const invalidReason = computed(() => {
@@ -49,7 +48,6 @@ onMounted(() => {
 
 <template>
   <div class="movie-form">
-    <h1>{{ formTitle }}</h1>
     <p>
       <label>
         Name
@@ -103,19 +101,8 @@ onMounted(() => {
 </template>
 
 <style scoped>
-h1 {
-  font-size: 24px;
-  margin-bottom: 8px;
-}
-
 .movie-form {
-  display: inline-block;
   width: 60vw;
-  padding: 30px;
-  background-color: #333;
-  box-shadow: #111 5px 5px 5px;
-  border: 2px outset #eee;
-  border-radius: var(--border-radius);
 }
 
 label {
@@ -132,12 +119,6 @@ input[type='text'] {
   padding: 6px;
   border: 2px inset #eee;
   border-radius: var(--border-radius);
-  /*
-  // works but no good style
-  box-shadow:
-    0 0 0 1px #333,
-    0 0 0 2px #eee;
-   */
 }
 
 input[type='checkbox'] {
