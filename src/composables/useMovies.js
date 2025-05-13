@@ -5,10 +5,16 @@ import { useUtils } from "@/composables/useUtils";
 import jsonMovieData from '../movies.json'
 
 const { retrieveData, storeData } = useStorage()
-const { byId } = useUtils()
+const { byId, byName } = useUtils()
+
+const sorters = {
+    BY_ID: byId,
+    BY_NAME: byName
+}
 
 const movies = ref([])
-const sortedMovies = computed(() => cloneDeep(movies.value).sort(byId))
+const sortMode = ref('BY_ID')
+const sortedMovies = computed(() => cloneDeep(movies.value).sort(sorters[sortMode.value]))
 
 const lastId = computed(() => Math.max(...movies.value.map((movie) => movie.id)))
 const totalNrMovies = computed(() => movies.value.length)
@@ -68,6 +74,12 @@ export function useMovies() {
         )
     }
 
+    function sortMovies(mode) {
+        if (mode in sorters) {
+            sortMode.value = mode
+        }
+    }
+
     onBeforeMount(() => {
         movies.value = retrieveData()
         if (movies.value === null) {
@@ -83,6 +95,7 @@ export function useMovies() {
         removeMovie,
         resetAllMovieData,
         resetRatings,
+        sortMovies,
         totalNrMovies,
         updateMovie
     }
