@@ -7,7 +7,15 @@ import { useMovies } from '@/composables/useMovies'
 const Modal = defineAsyncComponent(() => import('@/components/Modal.vue'))
 const MovieForm = defineAsyncComponent(() => import('@/components/MovieForm.vue'))
 
-const { averageRating, getMovie, resetAllMovieData, resetRatings, totalNrMovies, updateMovie } = useMovies()
+const {
+  averageRating,
+  getMovie,
+  resetAllMovieData,
+  resetRatings,
+  sortMovies,
+  totalNrMovies,
+  updateMovie
+} = useMovies()
 
 const formMovie = ref()
 const isMovieFormOpen = ref(false)
@@ -24,6 +32,10 @@ function handleResetMovieData() {
 function handleAddMovie() {
   formMovie.value = null
   openMovieForm()
+}
+
+function handleSortMovies(mode) {
+  sortMovies(mode)
 }
 
 function handleEditMovie(movieId) {
@@ -55,6 +67,7 @@ function closeMovieForm() {
       :average-rating="averageRating"
       :total-nr-movies="totalNrMovies"
       @add-movie="handleAddMovie"
+      @sort-movies="handleSortMovies"
       @reset-all-ratings="handleResetRatings"
       @reset-all-movie-data="handleResetMovieData"
     />

@@ -64,7 +64,7 @@ onMounted(() => {
     </p>
     <p>
       <label>
-        Image
+        Image URL
         <br />
         <input type="text" id="image_url" name="image_url" v-model="movieData.image" />
       </label>
