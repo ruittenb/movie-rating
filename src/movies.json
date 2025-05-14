@@ -157,6 +157,19 @@
       "description": "The crew of the ship Serenity try to evade an assassin sent to recapture telepath River.",
       "inTheaters": false,
       "rating": 7
+    },
+    {
+      "id": 14,
+      "name": "La cité des enfants perdus",
+      "genres": [
+        "Arthouse",
+        "Fantasy",
+        "Sci-Fi"
+      ],
+      "image": "https://xl.movieposterdb.com/11_01/1995/112682/xl_112682_7e515ef7.jpg",
+      "description": "A scientist in a surrealist society kidnaps children to steal their dreams, hoping that they slow his aging process.",
+      "inTheaters": false,
+      "rating": 7
     }
   ]
 }

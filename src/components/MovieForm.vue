@@ -14,7 +14,10 @@ const emit = defineEmits([
 
 const { genres: allGenres } = useConstants()
 
-const movieData = ref({})
+const movieData = ref({
+  genres: [],
+  inTheaters: false
+})
 
 const isCreateMode = computed(() => !movieData.value.id)
 const primaryButtonLabel = computed(() => isCreateMode.value ? 'Add' : 'Update')
@@ -38,10 +41,9 @@ function handleSubmit() {
   }
 }
 
-onMounted(() => {
-  movieData.value = props.modelValue ? props.modelValue : {}
-  if (!('genres' in movieData.value)) {
-    movieData.value.genres = []
+onBeforeMount(() => {
+  if (props.modelValue) {
+    movieData.value = props.modelValue
   }
 })
 </script>

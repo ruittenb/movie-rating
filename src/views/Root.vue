@@ -45,6 +45,7 @@ function handleEditMovie(movieId) {
 
 function handleSubmit(movieData) {
   updateMovie(movieData)
+  console.log(JSON.stringify(movieData))
   closeMovieForm()
 }
 
