@@ -102,6 +102,9 @@ ul {
   top: 62px;
   right: 10px;
   overflow: hidden;
+  border: 2px outset var(--tertiary-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-color) 5px 5px 10px 10px;
 }
 
 li {

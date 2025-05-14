@@ -40,7 +40,7 @@ function handleClose() {
   width: 100vw;
   height: 100%;
   z-index: 1000;
-  background-color: #0008;
+  background-color: #0002;
   backdrop-filter: blur(4px);
 }
 
@@ -49,7 +49,7 @@ function handleClose() {
   min-width: 100px;
   padding: 30px;
   background-color: #333;
-  box-shadow: #111 5px 5px 5px;
+  box-shadow: var(--box-shadow-color) 5px 5px 10px;
   border: 2px outset #eee;
   border-radius: var(--border-radius);
 }
