@@ -73,6 +73,13 @@ onBeforeMount(() => {
     </p>
     <p>
       <label>
+        IMDb number
+        <br />
+        <input type="text" id="imdb" name="imdb" v-model="movieData.imdb" />
+      </label>
+    </p>
+    <p>
+      <label>
         Genres
         <br />
         <select id="genres" multiple="multiple" name="genres" v-model="movieData.genres" size="6">
