@@ -8,6 +8,7 @@ import App from './App.vue'
 // import the styles
 import 'vue-good-table-next/dist/vue-good-table-next.css'
 import '../style.css'
+import './assets/vars.css'
 
 // start code
 const app = createApp(App)

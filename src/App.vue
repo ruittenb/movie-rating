@@ -8,15 +8,3 @@ useIcons()
 <template>
   <Root />
 </template>
-
-<style>
-:root {
-  --body-margin-x: 1.5rem;
-  --border-radius: 6px;
-  --primary-color: mediumseagreen;
-  --secondary-color: goldenrod;
-  --tertiary-color: darkgray;
-  --danger-color: darkred;
-  --add-color: darkgreen;
-}
-</style>

@@ -50,15 +50,17 @@ function resetMovieData() {
     <StatsBar :average-rating="averageRating" :total-nr-movies="totalNrMovies" />
     <div v-click-outside="closeMenu">
       <FontAwesomeIcon icon="bars" class="hamburger" @click="toggleMenu" />
-      <ul v-show="isOpen" class="bg-white m-0 p-1.5">
-        <li @click="addMovie"><FontAwesomeIcon icon="circle-plus" class="plus" />Add Movie</li>
-        <hr />
-        <li @click="() => sortMovies('BY_NAME')"><FontAwesomeIcon icon="arrow-down-a-z" class="sort" />Sort by Name</li>
-        <li @click="() => sortMovies('BY_ID')"><FontAwesomeIcon icon="arrow-down-1-9" class="sort" />Sort by ID</li>
-        <hr />
-        <li @click="resetRatings"><FontAwesomeIcon icon="backward-step" class="danger" />Reset all Ratings</li>
-        <li @click="resetMovieData"><FontAwesomeIcon icon="backward-fast" class="danger" />Reset all Movie Data</li>
-      </ul>
+      <Transition name="unfold">
+        <ul v-show="isOpen" class="bg-white m-0 p-1.5">
+          <li @click="addMovie"><FontAwesomeIcon icon="circle-plus" class="plus" />Add Movie</li>
+          <hr />
+          <li @click="() => sortMovies('BY_NAME')"><FontAwesomeIcon icon="arrow-down-a-z" class="sort" />Sort by Name</li>
+          <li @click="() => sortMovies('BY_ID')"><FontAwesomeIcon icon="arrow-down-1-9" class="sort" />Sort by ID</li>
+          <hr />
+          <li @click="resetRatings"><FontAwesomeIcon icon="backward-step" class="danger" />Reset all Ratings</li>
+          <li @click="resetMovieData"><FontAwesomeIcon icon="backward-fast" class="danger" />Reset all Movie Data</li>
+        </ul>
+      </Transition>
     </div>
   </div>
 </template>
@@ -99,6 +101,10 @@ ul {
   width: 240px;
   top: 62px;
   right: 10px;
+  overflow: hidden;
+  border: 2px outset var(--tertiary-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-color) 5px 5px 10px 10px;
 }
 
 li {
@@ -121,5 +127,22 @@ li svg {
   font-size: 24px;
   margin-right: 12px;
   margin-bottom: -3px;
+}
+
+.unfold-enter-active {
+  transition: max-height 0.07s ease-out;
+}
+.unfold-leave-active {
+  transition: max-height 0.07s ease-out;
+}
+
+.unfold-enter-to,
+.unfold-leave-from {
+  max-height: 300px;
+}
+
+.unfold-enter-from,
+.unfold-leave-to {
+  max-height: 0;
 }
 </style>
