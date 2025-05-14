@@ -21,6 +21,10 @@ const isRated = computed(() =>
     props.movie.rating !== -Infinity
 )
 
+const movieUrl = computed(() => {
+  return `https://www.imdb.com/title/${props.movie.imdb}`
+})
+
 function handleEdit(movieId) {
   emit('edit', movieId)
 }
@@ -56,7 +60,8 @@ function handleImgLoad(event) {
           <FontAwesomeIcon icon="trash-can" />
         </ButtonElement>
       </div>
-      <h1>{{ movie.name }}</h1>
+      <h1 v-if="movie.imdb"><a :href="movieUrl" target="_blank">{{ movie.name }}</a></h1>
+      <h1 v-else>{{ movie.name }}</h1>
       <div class="mt-2 mb-3">
         <Genres :names="movie.genres" />
       </div>
@@ -106,6 +111,20 @@ h1 {
   height: 1.8rem;
   margin-top: calc(10px + var(--poster-height));
   white-space: nowrap;
+
+  &:hover {
+    background-color: var(--imdb-color);
+    border-radius: var(--border-radius);
+    border-width: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  a:hover {
+    text-decoration: #aaa underline;
+  }
 }
 
 .vertical-spreader {
