@@ -54,8 +54,9 @@ function resetMovieData() {
         <ul v-show="isOpen" class="bg-white m-0 p-1.5">
           <li @click="addMovie"><FontAwesomeIcon icon="circle-plus" class="plus" />Add Movie</li>
           <hr />
-          <li @click="() => sortMovies('BY_NAME')"><FontAwesomeIcon icon="arrow-down-a-z" class="sort" />Sort by Name</li>
           <li @click="() => sortMovies('BY_ID')"><FontAwesomeIcon icon="arrow-down-1-9" class="sort" />Sort by ID</li>
+          <li @click="() => sortMovies('BY_NAME')"><FontAwesomeIcon icon="arrow-down-a-z" class="sort" />Sort by Name</li>
+          <li @click="() => sortMovies('BY_RATING')"><FontAwesomeIcon icon="arrow-down-wide-short" class="sort" />Sort by Rating</li>
           <hr />
           <li @click="resetRatings"><FontAwesomeIcon icon="backward-step" class="danger" />Reset all Ratings</li>
           <li @click="resetMovieData"><FontAwesomeIcon icon="backward-fast" class="danger" />Reset all Movie Data</li>
