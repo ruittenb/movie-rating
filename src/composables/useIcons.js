@@ -2,6 +2,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faArrowDown19,
   faArrowDownAZ,
+  faArrowDownWideShort,
   faBackwardFast,
   faBackwardStep,
   faBars,
@@ -21,6 +22,7 @@ export function useIcons() {
   library.add(
     faArrowDown19,
     faArrowDownAZ,
+    faArrowDownWideShort,
     faBackwardFast,
     faBackwardStep,
     faBars,

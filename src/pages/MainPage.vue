@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useMovies } from '@/composables/useMovies'
-import MovieItem from '@/components/MovieItem.vue'
+import MoviePanel from '@/components/MoviePanel.vue'
 import MovieTable from '@/components/MovieTable.vue'
 
 const emit = defineEmits([
@@ -25,7 +25,7 @@ function handleUpdateRating(movieId, rating) {
 
 <template>
   <TransitionGroup name="list" tag="div" class="main-area px-6 py-5 mt-16 flex flex-row flex-wrap gap-5">
-    <MovieItem
+    <MoviePanel
       v-for="movie in movies"
       :key="movie.id"
       :movie="movie"

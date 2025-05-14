@@ -2,9 +2,12 @@
     --body-margin-x: 1.5rem;
     --border-radius: 6px;
     --box-shadow-color: #0006;
+
     --primary-color: mediumseagreen;
     --secondary-color: goldenrod;
     --tertiary-color: darkgray;
     --danger-color: darkred;
     --add-color: darkgreen;
+
+    --imdb-color: #ffcc2e;
 }

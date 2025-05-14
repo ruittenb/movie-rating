@@ -5,11 +5,12 @@ import { useUtils } from "@/composables/useUtils";
 import jsonMovieData from '../movies.json'
 
 const { retrieveData, storeData } = useStorage()
-const { byId, byName } = useUtils()
+const { byId, byName, byRating } = useUtils()
 
 const sorters = {
     BY_ID: byId,
-    BY_NAME: byName
+    BY_NAME: byName,
+    BY_RATING: byRating,
 }
 
 const movies = ref([])

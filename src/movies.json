@@ -5,68 +5,74 @@
       "name": "Riddick",
       "description": "Left for dead on a sun-scorched planet, Riddick finds himself up against an alien race of predators.",
       "image": "https://image.tmdb.org/t/p/original/rhnDPEcwLrX1bkEnADQr8rPirBT.jpg",
-      "rating": 6,
+      "imdb": "tt1411250",
       "genres": [
         "Sci-Fi",
         "Action",
         "Adventure"
       ],
-      "inTheaters": false
+      "inTheaters": false,
+      "rating": 6
     },
     {
       "id": 2,
       "name": "Moonlight",
       "description": "A young African-American man grapples with his identity and sexuality while experiencing the everyday struggles of childhood, adolescence, and burgeoning adulthood.",
       "image": "https://m.media-amazon.com/images/M/MV5BNzQxNTIyODAxMV5BMl5BanBnXkFtZTgwNzQyMDA3OTE@._V1_FMjpg_UY4096_.jpg",
-      "rating": 7,
+      "imdb": "tt4975722",
       "genres": [
         "Drama"
       ],
-      "inTheaters": false
+      "inTheaters": false,
+      "rating": 7
     },
     {
       "id": 3,
       "name": "Band of Brothers",
       "description": "The story of Easy Company of the U.S. Army 101st Airborne Division and their mission in World War II Europe, from Operation Overlord to V-J Day.\n\n",
       "image": "https://i.pinimg.com/736x/1c/45/b7/1c45b7e64675b0236d0f68b63d832360.jpg",
-      "rating": 10,
+      "imdb": "tt0185906",
       "genres": [
         "Drama",
         "History",
         "War"
       ],
-      "inTheaters": false
+      "inTheaters": false,
+      "rating": 10
     },
     {
       "id": 4,
       "name": "Dune",
       "description": "A Duke's son leads desert warriors against the galactic emperor and his father's evil nemesis to free their desert world from the emperor's rule.",
       "image": "https://image.tmdb.org/t/p/original/ngUaHgSZGkKy1Izwjk7qwZLOC5A.jpg",
-      "rating": 4,
+      "imdb": "tt0087182",
       "genres": [
         "Action",
         "Adventure",
         "Sci-Fi"
       ],
-      "inTheaters": false
+      "inTheaters": false,
+      "rating": 4
     },
     {
       "id": 5,
       "name": "Ja zuster, nee zuster",
       "description": "A cheerful stylized musical comedy, the story takes place in the guest-house of sister Klivia. The inhabitants are cheerful and good-hearted, but when the grumpy neighbor Boordevol discovers that one of the inhabitants is a former thief, he attempts to have the guest-house shut down.",
       "image": "https://nieuwdezeweek.nl/media/cache/e7/8c/e78cdf208721885df45b9fbb0ae3cdaf.jpg",
-      "rating": 5,
+      "imdb": "tt0309725",
       "genres": [
         "Comedy",
         "Musical"
       ],
-      "inTheaters": false
+      "inTheaters": false,
+      "rating": 5
     },
     {
       "id": 6,
-      "name": "The Fellowship of the Ring",
+      "name": "The Lord of the Rings: The Fellowship of the Ring",
       "description": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
       "image": "https://image.tmdb.org/t/p/original/b4XZizlvqQkZno8cT3VPBYTGudB.jpg",
+      "imdb": "tt0120737",
       "genres": [
         "Adventure",
         "Fantasy"
@@ -76,9 +82,10 @@
     },
     {
       "id": 7,
-      "name": "VII. The Force Awakens",
+      "name": "Star Wars VII. The Force Awakens",
       "description": "As a new threat to the galaxy rises, Rey, a desert scavenger, and Finn, an ex-stormtrooper, must join Han Solo and Chewbacca to search for the one hope of restoring peace.",
       "image": "https://image.tmdb.org/t/p/original/97FvEYBZaclReIVgN17wH4YnLLO.jpg",
+      "imdb": "tt2488496",
       "genres": [
         "Action",
         "Adventure",
@@ -92,6 +99,7 @@
       "name": "Manos: The Hands of Fate",
       "description": "A family gets lost on the road and stumbles upon a hidden, underground, devil-worshiping cult led by the fearsome Master and his servant Torgo.",
       "image": "https://image.tmdb.org/t/p/original/eblPrqZYnUaDJcxwiV9VCXoZfbU.jpg",
+      "imdb": "tt0060666",
       "genres": [
         "Horror"
       ],
@@ -103,6 +111,7 @@
       "name": "La haine",
       "description": "24 hours in the lives of three young men in the French suburbs the day after a violent riot.",
       "image": "https://media.senscritique.com/media/000004673810/source_big/La_Haine.jpg",
+      "imdb": "tt0113247",
       "genres": [
         "Crime",
         "Drama"
@@ -112,65 +121,107 @@
     },
     {
       "id": 10,
-      "name": "Slurf de dappere Smurf",
+      "name": "Slurf, de dappere smurf",
+      "description": "Slurf komt erachter dat alle andere smurfen broekjes dragen. Donnie legt hem uit waarom.",
+      "image": "https://i.postimg.cc/GhKqHwVc/20241001-163352.jpg",
+      "imdb": "",
       "genres": [
         "Adventure",
         "Animation"
       ],
-      "image": "https://i.postimg.cc/GhKqHwVc/20241001-163352.jpg",
-      "description": "Slurf komt erachter dat alle andere smurfen broekjes dragen. Donnie legt hem uit waarom.",
       "inTheaters": true,
       "rating": 4
     },
     {
       "id": 11,
       "name": "Jaws",
+      "description": "When a massive killer shark unleashes chaos on a beach community off Long Island, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.",
+      "image": "https://assets.mubicdn.net/images/notebook/post_images/31814/images-w1400.jpg",
       "genres": [
         "Adventure",
         "Horror"
       ],
-      "image": "https://assets.mubicdn.net/images/notebook/post_images/31814/images-w1400.jpg",
-      "description": "When a massive killer shark unleashes chaos on a beach community off Long Island, it's up to a local sheriff, a marine biologist, and an old seafarer to hunt the beast down.",
       "inTheaters": false,
       "rating": 8
     },
     {
       "id": 12,
       "name": "Life of Brian",
+      "description": "Born on the original Christmas in the stable next door to Jesus Christ, Brian of Nazareth spends his life being mistaken for a messiah.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNDMzY2E4NjEtMTJiZC00Y2UzLWFiM2MtZWVhNTg5OGQxNjk1XkEyXkFqcGc@._V1_FMjpg_UY2903_.jpg",
+      "imdb": "tt0079470",
       "genres": [
         "Comedy"
       ],
-      "image": "https://m.media-amazon.com/images/M/MV5BNDMzY2E4NjEtMTJiZC00Y2UzLWFiM2MtZWVhNTg5OGQxNjk1XkEyXkFqcGc@._V1_FMjpg_UY2903_.jpg",
-      "description": "Born on the original Christmas in the stable next door to Jesus Christ, Brian of Nazareth spends his life being mistaken for a messiah.",
       "inTheaters": false,
       "rating": 7
     },
     {
       "id": 13,
       "name": "Serenity",
+      "description": "The crew of the ship Serenity try to evade an assassin sent to recapture telepath River.",
+      "image": "https://image.tmdb.org/t/p/original/ckDo5vnRKehJ2qu8U95c7QcvGUm.jpg",
+      "imdb": "tt0379786",
       "genres": [
         "Action",
         "Adventure",
         "Sci-Fi"
       ],
-      "image": "https://image.tmdb.org/t/p/original/ckDo5vnRKehJ2qu8U95c7QcvGUm.jpg",
-      "description": "The crew of the ship Serenity try to evade an assassin sent to recapture telepath River.",
       "inTheaters": false,
       "rating": 7
     },
     {
       "id": 14,
       "name": "La cité des enfants perdus",
+      "description": "A scientist in a surrealist society kidnaps children to steal their dreams, hoping that they slow his aging process.",
+      "image": "https://xl.movieposterdb.com/11_01/1995/112682/xl_112682_7e515ef7.jpg",
+      "imdb": "tt0112682",
       "genres": [
         "Arthouse",
         "Fantasy",
         "Sci-Fi"
       ],
-      "image": "https://xl.movieposterdb.com/11_01/1995/112682/xl_112682_7e515ef7.jpg",
-      "description": "A scientist in a surrealist society kidnaps children to steal their dreams, hoping that they slow his aging process.",
+      "inTheaters": false,
+      "rating": 7
+    },
+    {
+      "id": 15,
+      "name": "The Godfather",
+      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "image": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UY1982_.jpg",
+      "imdb": "tt0068646",
+      "genres": [
+        "Crime",
+        "Drama"
+      ],
+      "inTheaters": false,
+      "rating": 8
+    },
+    {
+      "id": 16,
+      "name": "The Shawshank Redemption",
+      "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "image": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1200_.jpg",
+      "imdb": "tt0111161",
+      "genres": [
+        "Drama"
+      ],
+      "inTheaters": false,
+      "rating": 9
+    },
+    {
+      "id": 17,
+      "name": "The Dark Knight",
+      "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UY2048_.jpg",
+      "imdb": "tt0468569",
+      "genres": [
+        "Action",
+        "Crime",
+        "Drama"
+      ],
       "inTheaters": false,
       "rating": 7
     }
   ]
 }
-
