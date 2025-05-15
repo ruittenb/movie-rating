@@ -3,6 +3,7 @@ import ButtonElement from "@/components/ButtonElement.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 const props = defineProps({
+  show: Boolean,
   title: String
 })
 
@@ -14,23 +15,26 @@ function handleClose() {
 </script>
 
 <template>
-  <div class="mask">
-    <div class="modal-window">
-      <div class="modal-title">
-        <h1>{{ props.title }}</h1>
-        <ButtonElement @click="handleClose">
-          <FontAwesomeIcon icon="xmark" />
-        </ButtonElement>
-      </div>
-      <div class="modal-body">
-        <slot>This is a modal dialog</slot>
+  <Transition name="modal" appear>
+    <div v-if="show" class="mask">
+      <div class="modal-window">
+        <div class="modal-title">
+          <h1>{{ props.title }}</h1>
+          <ButtonElement @click="handleClose">
+            <FontAwesomeIcon icon="xmark" />
+          </ButtonElement>
+        </div>
+        <div class="modal-body">
+          <slot>This is a modal dialog</slot>
+        </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <style scoped>
 .mask {
+  --animation-timescale: 0.2s;
   display: flex;
   place-items: center;
   justify-content: center;
@@ -44,6 +48,16 @@ function handleClose() {
   backdrop-filter: blur(4px);
 }
 
+.modal-leave-to,
+.modal-enter-from {
+  background-color: transparent;
+  opacity: 0;
+}
+.modal-enter-active,
+.modal-leave-active {
+  transition: background-color var(--animation-timescale) ease, opacity var(--animation-timescale) ease;
+}
+
 .modal-window {
   display: inline-block;
   min-width: 100px;
@@ -52,6 +66,16 @@ function handleClose() {
   box-shadow: var(--box-shadow-color) 5px 5px 10px;
   border: 2px outset #eee;
   border-radius: var(--border-radius);
+  transform: translateY(0px);
+}
+
+.modal-leave-to .modal-window,
+.modal-enter-from .modal-window {
+  transform: translateY(-50px);
+}
+.modal-enter-active .modal-window,
+.modal-leave-active .modal-window {
+  transition: transform var(--animation-timescale) ease;
 }
 
 .modal-title {

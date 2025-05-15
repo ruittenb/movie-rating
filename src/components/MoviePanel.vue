@@ -5,8 +5,10 @@ import DigitStar from './DigitStar.vue'
 import Genres from './Genres.vue'
 import Rating from './Rating.vue'
 
-const MAX_CHAR_WIDTH_60 = 40
-const MAX_CHAR_WIDTH_80 = 30
+const MAX_TITLE_LENGTH_XXLONG = 37
+const MAX_TITLE_LENGTH_XLONG = 34
+const MAX_TITLE_LENGTH_LONG = 30
+const MAX_TITLE_LENGTH_NORMAL = 28
 
 const props = defineProps({
   movie: Object
@@ -18,12 +20,20 @@ const emit = defineEmits([
   'update:rating'
 ])
 
-const headerClasses = computed(() => {
+const headerStyle = computed(() => {
   const length = props.movie.name.length
-  return ({
-    compact60: length > MAX_CHAR_WIDTH_60,
-    compact80: length > MAX_CHAR_WIDTH_80 && length <= MAX_CHAR_WIDTH_60
-  })
+  switch (true) {
+    case length > MAX_TITLE_LENGTH_XXLONG:
+      return 'transform: scaleX(0.6)'
+    case length > MAX_TITLE_LENGTH_XLONG:
+      return 'transform: scaleX(0.7)'
+    case length > MAX_TITLE_LENGTH_LONG:
+      return 'transform: scaleX(0.8)'
+    case length > MAX_TITLE_LENGTH_NORMAL:
+      return 'transform: scaleX(0.9)'
+    default:
+      return ''
+  }
 })
 
 const movieUrl = computed(() => {
@@ -65,7 +75,7 @@ function handleImgLoad(event) {
           <FontAwesomeIcon icon="trash-can" />
         </ButtonElement>
       </div>
-      <h1 :class="headerClasses">
+      <h1 :style="headerStyle">
         <a v-if="movie.imdb" :href="movieUrl" target="_blank">{{ movie.name }}</a>
         <span v-else>{{ movie.name }}</span>
       </h1>
@@ -119,13 +129,6 @@ h1 {
   margin-top: calc(10px + var(--poster-height));
   white-space: nowrap;
   transform-origin: left center;
-
-  &.compact80 {
-    transform: scaleX(0.8);
-  }
-  &.compact60 {
-    transform: scaleX(0.6);
-  }
 
   a {
     text-decoration: none;

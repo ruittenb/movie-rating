@@ -8,7 +8,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits([
-  'cancel',
+  'abort',
   'update:modelValue'
 ])
 
@@ -32,7 +32,7 @@ const invalidReason = computed(() => {
 })
 
 function handleCancel() {
-  emit('cancel')
+  emit('abort')
 }
 
 function handleSubmit() {
@@ -69,6 +69,13 @@ onBeforeMount(() => {
         Image URL
         <br />
         <input type="text" id="image_url" name="image_url" v-model="movieData.image" />
+      </label>
+    </p>
+    <p>
+      <label>
+        IMDb number
+        <br />
+        <input type="text" id="imdb" name="imdb" v-model="movieData.imdb" />
       </label>
     </p>
     <p>
