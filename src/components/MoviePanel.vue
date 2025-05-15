@@ -63,7 +63,7 @@ function handleImgLoad(event) {
   <div class="movie-panel inline-block bg-white text-gray-800 mb-4">
     <div class="vertical-spreader grid">
       <div class="poster default-img">
-        <img :alt="movie.name" :src="movie.image" class="poster" @error="handleImgError" @load="handleImgLoad"/>
+        <img v-if="movie.image" :alt="movie.name" :src="movie.image" class="poster" @error="handleImgError" @load="handleImgLoad"/>
       </div>
       <DigitStar :rating="movie.rating" />
       <div class="top-left-overlay">
