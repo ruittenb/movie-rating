@@ -79,10 +79,11 @@ onMounted(() => {
       </label>
     </p>
     <p>
-      <label>
+      <label class="relative">
         IMDb number
         <br />
-        <input type="text" id="imdb" name="imdb" v-model="movieData.imdb" />
+        <input type="text" id="imdb" name="imdb" placeholder="_________" v-model="movieData.imdb" />
+        <div id="imdb-prefix">https://www.imdb.com/title/</div>
       </label>
     </p>
     <p>
@@ -143,6 +144,26 @@ input[type='checkbox'] {
   border: 2px inset #eee;
   margin-right: 6px;
   vertical-align: middle;
+}
+
+#imdb,
+#imdb-prefix {
+  color: var(--tertiary-color);
+  padding: 6px;
+}
+#imdb {
+  padding-left: 206px;
+  width: 100%;
+  color: black;
+  z-index: 50;
+}
+#imdb-prefix {
+  position: absolute;
+  top: 1.45rem;
+  user-select: none;
+  font-style: normal;
+  padding-left: 8px;
+  z-index: 20;
 }
 
 .buttonbox {
