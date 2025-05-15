@@ -223,6 +223,33 @@
       ],
       "inTheaters": false,
       "rating": 7
+    },
+    {
+      "id": 18,
+      "name": "XXX: Return of Xander Cage",
+      "description": "Xander Cage, left for dead after an incident, is recruited back into action for a new assignment, leading a team of death-defying adrenaline junkies.",
+      "image": "https://image.tmdb.org/t/p/original/hba8zREJpP1AYhaXgb2oJLQeO0K.jpg",
+      "imdb": "tt1293847",
+      "genres": [
+        "Action",
+        "Thriller"
+      ],
+      "inTheaters": false,
+      "rating": 5
+    },
+    {
+      "id": 19,
+      "name": "Bloodshot",
+      "description": "Ray Garrison, a slain soldier, is re-animated with superpowers.",
+      "image": "https://fr.web.img5.acsta.net/pictures/20/01/23/09/02/1428612.jpg",
+      "imdb": "tt1634106",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Sci-Fi"
+      ],
+      "inTheaters": false,
+      "rating": 6
     }
   ]
 }

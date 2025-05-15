@@ -1,5 +1,4 @@
 <script setup>
-import { computed, ref, onMounted } from 'vue'
 import ButtonElement from './ButtonElement.vue'
 import { useConstants } from '@/composables/useConstants'
 
@@ -13,6 +12,8 @@ const emit = defineEmits([
 ])
 
 const { genres: allGenres } = useConstants()
+
+const nameElement = useTemplateRef('name')
 
 const movieData = ref({
   genres: [],
@@ -46,6 +47,12 @@ onBeforeMount(() => {
     movieData.value = props.modelValue
   }
 })
+
+onMounted(() => {
+  if (!movieData.value.name) {
+    nameElement.value.focus()
+  }
+})
 </script>
 
 <template>
@@ -54,7 +61,7 @@ onBeforeMount(() => {
       <label>
         Name
         <br />
-        <input type="text" id="name" name="name" v-model="movieData.name" />
+        <input type="text" id="name" name="name" ref="name" v-model="movieData.name" />
       </label>
     </p>
     <p>

@@ -84,11 +84,11 @@ function handleClose() {
   justify-content: space-between;
   margin-bottom: 8px;
 
-  h1 {
+  & h1 {
     font-size: 24px;
   }
 
-  button {
+  & button {
     display: inline-block;
     height: 32px;
     width: 32px;

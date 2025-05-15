@@ -1,5 +1,4 @@
 //import Vue from 'vue'
-import { createApp } from 'vue'
 import VClickOutside from 'click-outside-vue3'
 import VueGoodTablePlugin from 'vue-good-table-next'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
