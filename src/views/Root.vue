@@ -76,14 +76,14 @@ function closeMovieForm() {
       @edit="handleEditMovie"
     />
     <Modal
-      v-if="isMovieFormOpen"
-      :title="formTitle"
-      @close="handleCancel"
+        :show="isMovieFormOpen"
+        :title="formTitle"
+        @close="handleCancel"
     >
       <MovieForm
-        :model-value="formMovie"
-        @cancel="handleCancel"
-        @update:model-value="handleSubmit"
+          :model-value="formMovie"
+          @abort="handleCancel"
+          @update:model-value="handleSubmit"
       />
     </Modal>
   </div>

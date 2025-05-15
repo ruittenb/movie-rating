@@ -8,7 +8,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits([
-  'cancel',
+  'abort',
   'update:modelValue'
 ])
 
@@ -32,7 +32,7 @@ const invalidReason = computed(() => {
 })
 
 function handleCancel() {
-  emit('cancel')
+  emit('abort')
 }
 
 function handleSubmit() {
