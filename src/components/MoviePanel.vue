@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue'
 import ButtonElement from './ButtonElement.vue'
 import DigitStar from './DigitStar.vue'
 import Genres from './Genres.vue'
@@ -130,9 +129,10 @@ h1 {
   white-space: nowrap;
   transform-origin: left center;
 
-  a {
+  & a {
     text-decoration: none;
     color: inherit;
+
     &:hover {
       text-decoration: var(--tertiary-color) underline;
     }

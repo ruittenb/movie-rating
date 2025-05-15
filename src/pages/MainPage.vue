@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from 'vue'
 import { useMovies } from '@/composables/useMovies'
 import MoviePanel from '@/components/MoviePanel.vue'
 import MovieTable from '@/components/MovieTable.vue'

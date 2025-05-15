@@ -1,6 +1,4 @@
 <script setup>
-import { computed } from 'vue'
-
 const props = defineProps({ rating: Number })
 
 const starColorClass = computed(() => (props.rating !== null ? 'text-star-gold' : 'text-star-disabled'))
