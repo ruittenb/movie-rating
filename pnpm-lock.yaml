@@ -41,6 +41,9 @@ importers:
       vue-good-table-next:
         specifier: ^0.2.1
         version: 0.2.1
+      vue-router:
+        specifier: ^4.5.1
+        version: 4.5.1(vue@3.5.14)
       vue-types:
         specifier: ^5.1.2
         version: 5.1.2(vue@3.5.14)
@@ -421,6 +424,9 @@ packages:
 
   '@vue/compiler-ssr@3.5.14':
     resolution: {integrity: sha512-Y0G7PcBxr1yllnHuS/NxNCSPWnRGH4Ogrp0tsLA5QemDZuJLs99YjAKQ7KqkHE0vCg4QTKlQzXLKCMF7WPSl7Q==}
+
+  '@vue/devtools-api@6.6.4':
+    resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
 
   '@vue/eslint-config-prettier@8.0.0':
     resolution: {integrity: sha512-55dPqtC4PM/yBjhAr+yEw6+7KzzdkBuLmnhBrDfp4I48+wy+Giqqj9yUr5T2uD/BkBROjjmqnLZmXRdOx/VtQg==}
@@ -1659,6 +1665,11 @@ packages:
   vue-good-table-next@0.2.1:
     resolution: {integrity: sha512-Zri8pQtUdb698FA+KSSOW4rxLthuJw8QUdWDdmArUPyxjVFH0wpXbK32r9RgPkHFMMPVUSsqchCqE2wE1tI0qg==}
 
+  vue-router@4.5.1:
+    resolution: {integrity: sha512-ogAF3P97NPm8fJsE4by9dwSYtDwXIY1nFY9T6DyQnGHd1E2Da94w9JIolpe42LJGIl0DwOHBi8TcRPlPGwbTtw==}
+    peerDependencies:
+      vue: ^3.2.0
+
   vue-types@5.1.2:
     resolution: {integrity: sha512-NdwLhEl2hn2PRsHb+eYgwBfimFZB2Y0s11YqFRX0VEMrDZZvzPXYxcUJ+aH7AIHyxGc47qdgakVzcjw6bZElBw==}
     engines: {node: '>=14.0.0'}
@@ -2047,6 +2058,8 @@ snapshots:
     dependencies:
       '@vue/compiler-dom': 3.5.14
       '@vue/shared': 3.5.14
+
+  '@vue/devtools-api@6.6.4': {}
 
   '@vue/eslint-config-prettier@8.0.0(eslint@8.57.0)(prettier@3.2.5)':
     dependencies:
@@ -3319,6 +3332,11 @@ snapshots:
     dependencies:
       date-fns: 2.30.0
       lodash.isequal: 4.5.0
+
+  vue-router@4.5.1(vue@3.5.14):
+    dependencies:
+      '@vue/devtools-api': 6.6.4
+      vue: 3.5.14
 
   vue-types@5.1.2(vue@3.5.14):
     dependencies:
