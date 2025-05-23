@@ -23,7 +23,7 @@ const routes = [{
 }, {
     path: '/:pathMatch(.*)',
     component: ErrorView,
-    props: { status: 404 }
+    props: { statusCode: 404, statusMessage: 'Not Found' }
 }]
 const router = createRouter({
     history: createWebHistory(),

@@ -1,11 +1,13 @@
-<script setup lang="ts">
+<script setup>
 
 </script>
 
 <template>
-This is the detail view
+  <p>This is the detail view</p>
 </template>
 
 <style scoped>
-
+p {
+  color: white;
+}
 </style>
