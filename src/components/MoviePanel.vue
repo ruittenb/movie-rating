@@ -55,7 +55,6 @@ function handleUpdateRating(id, rating) {
 }
 
 function handleZoom(id) {
-  console.log('router:', router)
   router.push({ name: 'detailView', params: { id } })
 }
 
@@ -101,11 +100,6 @@ function handleImgLoad(event) {
 
 <style scoped>
 .movie-panel {
-  --width: 300px;
-  --margin: 10px;
-  --poster-height: calc(1.5 * var(--width));
-  --box-height: calc(2.19 * var(--width));
-
   position: relative;
   width: var(--width);
   height: var(--box-height);

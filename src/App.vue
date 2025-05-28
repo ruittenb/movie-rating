@@ -1,6 +1,6 @@
 <script setup>
-import { useIcons } from '@/composables/useIcons'
 import { RouterView } from 'vue-router'
+import { useIcons } from '@/composables/useIcons'
 
 useIcons()
 </script>
