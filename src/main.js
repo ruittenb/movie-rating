@@ -4,7 +4,7 @@ import VueGoodTablePlugin from 'vue-good-table-next'
 import VClickOutside from 'click-outside-vue3'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import App from './App.vue'
-import OverView from "@/views/OverView.vue";
+import GridView from "@/views/GridView.vue";
 import DetailView from "@/views/DetailView.vue";
 import ErrorView from "@/views/ErrorView.vue";
 
@@ -16,12 +16,15 @@ import './assets/vars.css'
 // define routes
 const routes = [{
     path: '/',
-    component: OverView
+    name: 'gridView',
+    component: GridView
 }, {
     path: '/:id',
+    name: 'detailView',
     component: DetailView
 }, {
     path: '/:pathMatch(.*)',
+    name: 'errorView',
     component: ErrorView,
     props: { statusCode: 404, statusMessage: 'Not Found' }
 }]
