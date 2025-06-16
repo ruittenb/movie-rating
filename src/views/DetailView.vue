@@ -1,7 +1,8 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { useMovies } from '@/composables/useMovies'
-import Genres from '../components/Genres.vue'
+import DigitStar from "@/components/DigitStar.vue";
+import Genres from '@/components/Genres.vue'
 
 const route = useRoute()
 const { getMovie } = useMovies()
@@ -16,12 +17,15 @@ onMounted(() => {
 <template>
   <div class="detail-page">
     <div class="movie-card">
-      <img :src="movieData.image" class="poster" />
+      <div class="poster">
+        <img :alt="movieData.name" :src="movieData.image"/>
+        <DigitStar :rating="movieData.rating" />
+      </div>
       <h1>{{ movieData.name }}</h1>
       <div class="genres">
         <Genres :names="movieData.genres" />
       </div>
-      <div class="movie-data">
+      <div class="main-data">
         {{ movieData.description }}
         <br>
         <!--ImdbLink :id="movieData.imdb">On IMDB</ImdbLink-->
@@ -53,24 +57,28 @@ onMounted(() => {
   align-items: start;
 }
 
-h1 {
-  font-size: 48px;
-  grid-area: header;
-  row-span: 2;
+.poster {
+  grid-area: image;
+  position: relative;
+
+  & img {
+    min-width: calc(var(--width) * 1.5);
+    height: calc(var(--poster-height) * 1.5);
+    object-fit: cover;
+  }
 }
 
-.poster {
-  min-width: calc(var(--width) * 1.5);
-  height: calc(var(--poster-height) * 1.5);
-  grid-area: image;
-  object-fit: cover;
+h1 {
+  grid-area: header;
+  row-span: 2;
+  font-size: 48px;
 }
 
 .genres {
   grid-area: genres;
 }
 
-.movie-data {
+.main-data {
   grid-area: main;
   font-size: 18px;
 }
