@@ -1,4 +1,5 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import ButtonElement from './ButtonElement.vue'
 import DigitStar from './DigitStar.vue'
 import Genres from './Genres.vue'
@@ -18,6 +19,8 @@ const emit = defineEmits([
   'remove',
   'update:rating'
 ])
+
+const router = useRouter()
 
 const headerStyle = computed(() => {
   const length = props.movie.name.length
@@ -51,9 +54,14 @@ function handleUpdateRating(id, rating) {
   emit('update:rating', id, rating)
 }
 
+function handleZoom(id) {
+  router.push({ name: 'detailView', params: { id } })
+}
+
 function handleImgError(event) {
   event.target.style.display = 'none';
 }
+
 function handleImgLoad(event) {
   event.target.style.display = 'inline';
 }
@@ -67,10 +75,13 @@ function handleImgLoad(event) {
       </div>
       <DigitStar :rating="movie.rating" />
       <div class="top-left-overlay">
-        <ButtonElement class="w-9" @click="() => handleEdit(movie.id)">
+        <ButtonElement class="panel-button" @click="() => handleEdit(movie.id)">
           <FontAwesomeIcon icon="pencil" />
         </ButtonElement>
-        <ButtonElement danger class="w-9" @click="() => handleRemove(movie.id)">
+        <ButtonElement class="panel-button" @click="() => handleZoom(movie.id)">
+          <FontAwesomeIcon icon="eye" />
+        </ButtonElement>
+        <ButtonElement danger class="panel-button" @click="() => handleRemove(movie.id)">
           <FontAwesomeIcon icon="trash-can" />
         </ButtonElement>
       </div>
@@ -89,11 +100,6 @@ function handleImgLoad(event) {
 
 <style scoped>
 .movie-panel {
-  --width: 300px;
-  --margin: 10px;
-  --poster-height: calc(1.5 * var(--width));
-  --box-height: calc(2.19 * var(--width));
-
   position: relative;
   width: var(--width);
   height: var(--box-height);
@@ -101,8 +107,12 @@ function handleImgLoad(event) {
   padding-right: var(--margin);
 }
 
+.panel-button {
+  width: 2.5rem;
+}
+
 .top-left-overlay {
-  @apply absolute left-3 top-3 mb-3 w-20 h-9 flex justify-between;
+  @apply absolute left-3 top-3 mb-3 w-32 h-9 flex justify-between;
   color: black;
   visibility: hidden;
 }

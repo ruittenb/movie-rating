@@ -1,10 +1,10 @@
 <script setup>
-import Root from './views/Root.vue'
+import { RouterView } from 'vue-router'
 import { useIcons } from '@/composables/useIcons'
 
 useIcons()
 </script>
 
 <template>
-  <Root />
+  <RouterView />
 </template>
