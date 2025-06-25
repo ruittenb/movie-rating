@@ -121,7 +121,7 @@
     },
     {
       "id": 10,
-      "name": "Slurf, de dappere smurf",
+      "name": "Slurf, de domme smurf",
       "description": "Slurf komt erachter dat alle andere smurfen broekjes dragen. Donnie legt hem uit waarom.",
       "image": "https://i.postimg.cc/GhKqHwVc/20241001-163352.jpg",
       "imdb": "",
@@ -250,6 +250,19 @@
       ],
       "inTheaters": false,
       "rating": 6
+    },
+    {
+      "id": 20,
+      "name": "Les Intouchables",
+      "description": "After he becomes a quadriplegic from a paragliding accident, an aristocrat hires a young man from the projects to be his caregiver.",
+      "image": "https://m.media-amazon.com/images/M/MV5BMTYxNDA3MDQwNl5BMl5BanBnXkFtZTcwNTU4Mzc1Nw@@._V1_FMjpg_UY2048_.jpg",
+      "imdb": "tt1675434",
+      "genres": [
+        "Comedy",
+        "Drama"
+      ],
+      "inTheaters": false,
+      "rating": 8
     }
   ]
 }
