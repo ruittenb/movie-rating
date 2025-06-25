@@ -83,7 +83,7 @@ onMounted(() => {
         IMDb number
         <br />
         <input type="text" id="imdb" name="imdb" placeholder="_________" v-model="movieData.imdb" />
-        <div id="imdb-prefix">https://www.imdb.com/title/</div>
+        <span id="imdb-prefix">https://www.imdb.com/title/</span>
       </label>
     </p>
     <p>
@@ -158,6 +158,7 @@ input[type='checkbox'] {
   z-index: 50;
 }
 #imdb-prefix {
+  display: block;
   position: absolute;
   top: 1.45rem;
   user-select: none;

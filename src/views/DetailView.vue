@@ -1,13 +1,19 @@
 <script setup>
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { useMovies } from '@/composables/useMovies'
 import DigitStar from "@/components/DigitStar.vue";
 import Genres from '@/components/Genres.vue'
+import ButtonElement from '@/components/ButtonElement.vue'
 
 const route = useRoute()
+const router = useRouter()
 const { getMovie } = useMovies()
 
 const movieData = ref({})
+
+function handleBackButton() {
+  router.push({ name: 'gridView' })
+}
 
 onMounted(() => {
   movieData.value = getMovie(Number(route.params.id))
@@ -16,6 +22,9 @@ onMounted(() => {
 
 <template>
   <div class="detail-page">
+    <ButtonElement class="back-button" @click="handleBackButton">
+      <FontAwesomeIcon icon="arrow-left" />
+    </ButtonElement>
     <div class="movie-card">
       <div class="poster">
         <img :alt="movieData.name" :src="movieData.image"/>
@@ -70,8 +79,14 @@ onMounted(() => {
 
 h1 {
   grid-area: header;
-  row-span: 2;
   font-size: 48px;
+}
+
+.back-button {
+  position: absolute;
+  left: 100px;
+  top: 100px;
+  width: 2rem;
 }
 
 .genres {
