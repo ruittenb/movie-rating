@@ -18,6 +18,9 @@ import {
   faTrashCan,
   faXmark,
 } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCircleLeft,
+} from '@fortawesome/free-regular-svg-icons'
 
 export function useIcons() {
   // prepare icons
@@ -29,6 +32,7 @@ export function useIcons() {
     faBackwardFast,
     faBackwardStep,
     faBars,
+    faCircleLeft,
     faCirclePlus,
     faEye,
     faMoneyBillWave,

@@ -22,9 +22,9 @@ onMounted(() => {
 
 <template>
   <div class="detail-page">
-    <ButtonElement class="back-button" @click="handleBackButton">
-      <FontAwesomeIcon icon="arrow-left" />
-    </ButtonElement>
+    <div class="back-button" @click="handleBackButton">
+      <FontAwesomeIcon icon="fa-regular fa-circle-left" />
+    </div>
     <div class="movie-card">
       <div class="poster">
         <img :alt="movieData.name" :src="movieData.image"/>
@@ -84,9 +84,12 @@ h1 {
 
 .back-button {
   position: absolute;
-  left: 100px;
-  top: 100px;
-  width: 2rem;
+  left: 60px;
+  top: 80px;
+  width: 2.3rem;
+  font-size: 3em;
+  color: #ddd;
+  cursor: pointer;
 }
 
 .genres {
